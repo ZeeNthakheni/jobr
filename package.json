@@ -6,6 +6,7 @@
     "main": "index.html",
     "dependencies": {
         "node-sass": "^4.9.3"
+        
     },
     "scripts": {
         "dev": "npm run development",
@@ -43,4 +44,5 @@
         "run-sequence": "^1.2.2",
         "vue": "^2.5.7"
     }
+    
 }

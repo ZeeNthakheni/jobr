@@ -110,4 +110,24 @@ class JobsController extends Controller
     {
         //
     }
+
+    public function internship()
+    {
+        return view('pages.jobs.internship');
+    }
+
+    public function learnership()
+    {
+        return view('pages.jobs.learnership');
+    }
+
+    public function pending()
+    {
+        return view('pages.jobs.pending');
+    }
+
+    public function professional()
+    {
+        return view('pages.jobs.professional');
+    }
 }

@@ -108,4 +108,24 @@ class ClientsController extends Controller
     {
         //
     }
+
+    public function internship()
+    {
+        return view('pages.clients.internship');
+    }
+
+    public function learnership()
+    {
+        return view('pages.clients.learnership');
+    }
+
+    public function pending()
+    {
+        return view('pages.clients.pending');
+    }
+
+    public function professional()
+    {
+        return view('pages.clients.professional');
+    }
 }

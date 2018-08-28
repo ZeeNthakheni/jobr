@@ -1,13 +1,19 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<div class="col-12 grid-margin stretch-card">
 
+<div class="page-header">
+    <h3 class="page-title">
+      <span class="page-title-icon bg-gradient-primary text-white mr-2">
+        <i class="mdi mdi-home"></i>                 
+      </span>
+      Create Client
+    </h3>
+</div>
+
+<div class="col-12 grid-margin stretch-card">
         <div class="card">
-          <div class="card-body">
-            <h4 class="card-title">Create Client</h4>
-            <p class="card-description">
-              
+          <div class="card-body">   
             </p>
             <form method = "POST"  action="/clients" class="forms-sample" >
               {{csrf_field()}}

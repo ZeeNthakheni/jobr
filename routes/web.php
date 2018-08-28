@@ -21,47 +21,32 @@ Auth::routes();
 
 //Home routes
 Route::get('/', 'HomeController@index')->name('home');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Jobs routes
 Route::get('/jobs-create','jobsController@create');
 
-Route::get('/jobs-internship', function () {
-    return view('pages.jobs.internship');
-});
+Route::get('/jobs-internship','jobsController@internship');
 
-Route::get('/jobs-leanership', function () {
-    return view('pages.jobs.learnership');
-});
+Route::get('/jobs-leanership','jobsController@learnership');
 
-Route::get('/jobs-pending', function () {
-    return view('pages.jobs.pending');
-});
+Route::get('/jobs-pending','jobsController@pending');
 
-Route::get('/jobs-professional', function () {
-    return view('pages.jobs.professional');
-});
+Route::get('/jobs-professional','jobsController@professional');
 
 Route::resource('jobs', 'jobsController');
 
 //Client routes
 Route::get('/clients-create','clientsController@create');
 
-Route::get('/clients-internship', function () {
-    return view('pages.clients.internship');
-});
+Route::get('/clients-internship','clientsController@internship');
 
-Route::get('/clients-leanership', function () {
-    return view('pages.clients.learnership');
-});
+Route::get('/clients-leanership','clientsController@learnership');
 
-Route::get('/clients-pending', function () {
-    return view('pages.clients.pending');
-});
+Route::get('/clients-pending','clientsController@pending');
 
-Route::get('/clients-professional', function () {
-    return view('pages.clients.professional');
-});
+Route::get('/clients-professional','clientsController@professional');
 
 Route::resource('clients', 'clientsController');
 

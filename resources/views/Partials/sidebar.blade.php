@@ -20,11 +20,11 @@
 
           <!-- Home Nav item-->
           <li class="nav-item">
-            <a class="nav-link" href="/">
-              <span class="menu-title">Home</span>
-              <i class="mdi mdi-home menu-icon"></i>
-            </a>
-          </li>
+              <a class="nav-link" href="/home">
+                <span class="menu-title">Home</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
           <!-- Home Nav item ends-->
 
 
@@ -36,7 +36,7 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/create-jobs">Create Job</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/jobs-create">Create Job</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/jobs-professional">Professional</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/jobs-leanership">Learnership</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/jobs-internship">Internship</a></li>
@@ -55,7 +55,7 @@
             </a>
             <div class="collapse" id="general-pages">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/create-clients">Create Client</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/clients-create">Create Client</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/clients-professional">Professional</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/clients-leanership">Learnership</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/clients-internship">Internship</a></li>

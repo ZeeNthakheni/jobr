@@ -15,6 +15,8 @@
 //    return view('welcome');
 //});
 
+
+//Authentication routes
 Auth::routes();
 
 //Home routes
@@ -22,9 +24,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Jobs routes
-Route::get('/create-jobs', function () {
-    return view('pages.jobs.create');
-});
+Route::get('/jobs-create','jobsController@create');
 
 Route::get('/jobs-internship', function () {
     return view('pages.jobs.internship');
@@ -42,11 +42,10 @@ Route::get('/jobs-professional', function () {
     return view('pages.jobs.professional');
 });
 
+Route::resource('jobs', 'jobsController');
 
 //Client routes
-Route::get('/create-clients', function () {
-    return view('pages.clients.create');
-});
+Route::get('/clients-create','clientsController@create');
 
 Route::get('/clients-internship', function () {
     return view('pages.clients.internship');
@@ -64,14 +63,13 @@ Route::get('/clients-professional', function () {
     return view('pages.clients.professional');
 });
 
+Route::resource('clients', 'clientsController');
 
 //Candidates routes
-Route::get('/candidates', function () {
-    return view('pages.candidates.candidates');
-});
+
+Route::resource('candidates', 'candidatesController');
 
 
 //Attatchments routes
-Route::get('/attatchments', function () {
-    return view('pages.attatchments.attatchments');
-});
+
+Route::resource('attatchments', 'attatchmentsController');

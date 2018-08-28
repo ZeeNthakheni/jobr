@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 class ClientsController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -51,7 +61,7 @@ class ClientsController extends Controller
         //Save client
         $client->save();
         //Redirect
-        return redirect('/clients')->with('success','client Created');
+        return redirect('/home')->with('success','client Created');
     }
 
     /**

@@ -9,8 +9,8 @@
                 <p class="card-description">
                 </p>
 
-                <form class="forms-sample" action="/jobs" method = "POST">
-                
+                <form method = "POST"  action="/jobs" class="forms-sample" >
+                  {{csrf_field()}}
                   <div class="form-group">
                     <label for="company">Company</label>
                     <input type="text" class="form-control" id="company" name="company" placeholder="Jobr">

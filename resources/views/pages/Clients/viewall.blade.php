@@ -41,5 +41,67 @@
             </div>
 </div>
 
-
+@if (count($clients)>0)
+  
+    <div class="card">
+      <div class="card-body">
+        <div style="overflow-x:auto;">  
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Location</th>
+                <th>Industry</th>
+                <th>Contact Details</th>
+                <th>Category</th>
+                <th>Recruiter</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+              <tbody>
+                @foreach ($clients as $client)
+                <tr>
+                  <td>{{$client->company}}</td>
+                  <td>{{$client->location}}</td>
+                  <td>{{$client->industry}}</td>
+                  <td>{{$client->contact}}</td>
+                  <td>{{$client->category}}</td>
+                  <td>{{$client->recruiter}}</td>
+                  <td>{{$client->status}}</td>
+                  <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                      <a href="/clients/{{$client->id}}" class="btn btn-gradient-primary btn-fw" title="View" >
+                        <i class="mdi mdi-glasses"></i>
+                        View
+                      </a>
+                      <a href="/clients/{{$client->id}}/edit" class="btn btn-gradient-success btn-fw" title="Edit">
+                        <i class="mdi mdi-lead-pencil"></i>
+                        Edit
+                      </a>
+                      
+                      <a class="btn btn-gradient-danger btn-fw" href="/clients/{{$client->id}}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
+                          <i class="mdi mdi-eraser"></i>
+                          Delete
+                      </a>
+                      <form id="delete-form" action="/clients/{{$client->id}}" method="POST" style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                      </form>
+                    </div>
+                  </td>                 
+                </tr>
+                @endforeach
+              </tbody> 
+            </table>   
+                
+            @else 
+               <div class="card" style="height: 100px; text-align: center">
+                 <h1 style="padding-top: 25px">No Candidates Available</h1>
+                </div> 
+            @endif
+            <br>          
+            {{ $clients->links() }}
+      </div>
+    </div>
+  </div>
 @endsection

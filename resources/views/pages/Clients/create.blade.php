@@ -66,13 +66,9 @@
                 <label for="recruiter">Recruiter</label>
                   <select class="form-control" id="recruiter" name="recruiter">
                     <option>Select</option>
-                    <option>Ramari Booi</option>
-                    <option>Happy Booi</option>
-                    <option>Kananelo Mooko</option>
-                    <option>Ziyanda Muvhango</option>
-                    <option>Ndima Maphaha</option>
-                    <option>Keitumetse Mabele</option>
-                    <option>Kgotatso Mokoke</option>
+                    @foreach ($userList as $user)
+                    <option value="{{$user->id}}">{{$user->name}}</option>   
+                    @endforeach
                   </select>
                 </div>
                 

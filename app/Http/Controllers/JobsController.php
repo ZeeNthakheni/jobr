@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\job;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\User;
 
 class JobsController extends Controller
 {
@@ -34,7 +35,8 @@ class JobsController extends Controller
      */
     public function create()
     {
-        return view('pages.jobs.create');
+        $userList = User::all();
+        return view('pages.jobs.create')->with('userList',$userList);
     }
 
     /**

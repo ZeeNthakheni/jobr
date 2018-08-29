@@ -62,16 +62,13 @@
           <label for="recruiter">Recruiter</label>
           <select class="form-control" id="recruiter" name="recruiter">
             <option>Select</option>
-            <option>Ramari Booi</option>
-            <option>Happy Booi</option>
-            <option>Kananelo Mooko</option>
-            <option>Ziyanda Muvhango</option>
-            <option>Ndima Maphaha</option>
-            <option>Keitumetse Mabele</option>
-            <option>Kgotatso Mokoke</option>
+            @foreach ($userList as $user)
+            <option value="{{$user->id}}">{{$user->name}}</option>   
+            @endforeach
           </select>
         </div>
 
+        <!-- 
         <div class="form-group">
           <label for="serviceProvider">Service Provider</label>
             <select class="form-control" id="serviceProvider" name="serviceProvider">
@@ -84,7 +81,8 @@
               <option>JOBMAIL</option>
             </select>
         </div>
-                    
+        -->   
+                
         <div class="form-group">
           <label for="client">Client</label>
             <select class="form-control" id="client" name="client">

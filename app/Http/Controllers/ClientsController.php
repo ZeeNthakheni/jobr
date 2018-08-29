@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Client;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\User;
 
 class ClientsController extends Controller
 {
@@ -24,7 +25,8 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        return view('pages.clients.viewall');
+        $clients = Client::paginate(15);
+        return view('pages.clients.viewall')->with('clients',$clients);
     }
 
     /**
@@ -34,7 +36,8 @@ class ClientsController extends Controller
      */
     public function create()
     {
-        return view('pages.clients.create');
+        $userList = User::all();
+        return view('pages.clients.create')->with('userList',$userList);
     }
 
     /**

@@ -74,4 +74,4 @@ Route::resource('attatchments', 'attatchmentsController');
 
 //Messages routes
 
-Route::resource('messages', 'messagesController');
+//Route::resource('messages', 'messagesController');

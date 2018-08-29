@@ -25,6 +25,8 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Jobs routes
+Route::get('/jobs-all','jobsController@index');
+
 Route::get('/jobs-create','jobsController@create');
 
 Route::get('/jobs-internship','jobsController@internship');
@@ -38,6 +40,8 @@ Route::get('/jobs-professional','jobsController@professional');
 Route::resource('jobs', 'jobsController');
 
 //Client routes
+Route::get('/clients-all','clientsController@index');
+
 Route::get('/clients-create','clientsController@create');
 
 Route::get('/clients-internship','clientsController@internship');
@@ -51,6 +55,15 @@ Route::get('/clients-professional','clientsController@professional');
 Route::resource('clients', 'clientsController');
 
 //Candidates routes
+Route::get('/candidates/placed','candidatesController@placed');
+
+Route::get('/candidates/listed','candidatesController@listed');
+
+Route::get('/candidates-pending','candidatesController@pending');
+
+Route::get('/candidates/shortlisted','candidatesController@shortlisted');
+
+Route::get('/candidates/blacklisted','candidatesController@blacklisted');
 
 Route::resource('candidates', 'candidatesController');
 

@@ -15,6 +15,19 @@ class CreateCandidatesTable extends Migration
     {
         Schema::create('candidates', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('idNumber');
+            $table->string('disability')->default('None');
+            $table->longText('residence');
+            $table->string('contactDetails');
+            $table->string('qualification');
+            $table->string('gender');
+            $table->string('race');
+            $table->string('candidateCategory');
+            $table->longText('experience');
+            $table->string('status');
+            $table->string('cv')->default('None');
+            $table->string('cvName')->default('None');
             $table->timestamps();
         });
     }

@@ -54,7 +54,7 @@
 
 
         <div class="form-group">
-          <label for="closingDate">Due Date</label>
+          <label for="closingDate">Closing Date</label>
           <input type="date" class="form-control" id="closingDate" name="closingDate">
         </div>
 
@@ -113,6 +113,7 @@
               <option>Filled</option>  
             </select>
         </div>
+
 
         <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
         <button class="btn btn-light">Cancel</button>

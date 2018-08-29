@@ -36,6 +36,7 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/jobs-all">View All</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/jobs-create">Create Job</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/jobs-professional">Professional</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/jobs-leanership">Learnership</a></li>
@@ -55,6 +56,7 @@
             </a>
             <div class="collapse" id="general-pages">
               <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/clients-all">View All</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/clients-create">Create Client</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/clients-professional">Professional</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/clients-leanership">Learnership</a></li>
@@ -83,12 +85,12 @@
           </li>
           <!-- Attachments Nav item ends-->
 
-          <!-- Messages button-->
+          <!-- Messages button
           <div class="card-body">    
             <div class="template-demo">
               <a class="btn btn-gradient-success btn-rounded btn-fw" href="messages/create">+ Send Message</a>
             </div>
           </div>
-          <!-- Messages button ends-->
+           Messages button ends-->
         </ul>
       </nav>

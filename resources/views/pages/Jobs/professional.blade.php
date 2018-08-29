@@ -14,7 +14,7 @@
         <div class="card bg-gradient-danger card-img-holder text-white">
             <div class="card-body">
                 <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">
-                <h4 class="font-weight-normal mb-3">Professional Active JOBS </h4>
+                <h4 class="font-weight-normal mb-3">Professional Active Jobs </h4>
                 <h2 class="mb-5">200</h2>
             </div>
         </div>
@@ -23,7 +23,7 @@
         <div class="card bg-gradient-info card-img-holder text-white">
             <div class="card-body">
                 <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">                  
-                <h4 class="font-weight-normal mb-3">Professional Pending JOBS</h4>
+                <h4 class="font-weight-normal mb-3">Professional Pending Jobs</h4>
                 <h2 class="mb-5">150</h2>
             </div>
         </div>
@@ -32,7 +32,7 @@
         <div class="card bg-gradient-success card-img-holder text-white">
             <div class="card-body">
                 <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">                                    
-                <h4 class="font-weight-normal mb-3">Professional Filled JOBS</h4>
+                <h4 class="font-weight-normal mb-3">Professional Filled Jobs</h4>
                 <h2 class="mb-5">100</h2>
             </div>
         </div>

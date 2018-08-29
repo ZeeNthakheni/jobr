@@ -63,6 +63,8 @@
   <!-- inject:js -->
   <script src="{{ asset('js/off-canvas.js') }}" defer></script>
   <script src="{{ asset('js/misc.js') }}" defer></script>
+  <script src="{{ asset('js/chart.js') }}" defer></script>
+  <script src="{{ asset('js/file-upload.js') }}" defer></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->

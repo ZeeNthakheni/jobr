@@ -49,6 +49,10 @@
               <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
             </a>
           </li>
+
+
+
+          <!--Messages dropdown
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <i class="mdi mdi-email-outline"></i>
@@ -96,6 +100,9 @@
               <h6 class="p-3 mb-0 text-center">4 new messages</h6>
             </div>
           </li>
+          Messages dropdown-->
+
+          <!--Alerts dropdown
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
               <i class="mdi mdi-bell-outline"></i>
@@ -149,6 +156,10 @@
               <h6 class="p-3 mb-0 text-center">See all notifications</h6>
             </div>
           </li>
+          Alerts dropdown-->
+
+
+
           <li class="nav-item nav-logout d-none d-lg-block">
             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                   <i class="mdi mdi-power"></i>

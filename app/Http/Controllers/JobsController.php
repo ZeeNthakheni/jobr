@@ -24,7 +24,7 @@ class JobsController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.jobs.viewall');
     }
 
     /**

@@ -82,5 +82,13 @@
             </a>
           </li>
           <!-- Attachments Nav item ends-->
+
+          <!-- Messages button-->
+          <div class="card-body">    
+            <div class="template-demo">
+              <a class="btn btn-gradient-success btn-rounded btn-fw" href="messages/create">+ Send Message</a>
+            </div>
+          </div>
+          <!-- Messages button ends-->
         </ul>
       </nav>

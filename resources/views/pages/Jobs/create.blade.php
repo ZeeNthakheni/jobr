@@ -54,8 +54,8 @@
 
 
         <div class="form-group">
-          <label for="dueDate">Due Date</label>
-          <input type="date" class="form-control" id="dueDate" name="dueDate">
+          <label for="closingDate">Due Date</label>
+          <input type="date" class="form-control" id="closingDate" name="closingDate">
         </div>
 
         <div class="form-group">

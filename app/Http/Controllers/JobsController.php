@@ -55,7 +55,7 @@ class JobsController extends Controller
         $job->qualifications = $request->input('qualifications');
         $job->location = $request->input('location');
         $job->salary = $request->input('salary');
-        $job->dueDate = $request->input('dueDate');
+        $job->closingDate = $request->input('closingDate');
         $job->recruiter = $request->input('recruiter');
         $job->client = $request->input('client');
         $job->category = $request->input('category');

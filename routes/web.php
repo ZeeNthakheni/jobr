@@ -58,3 +58,7 @@ Route::resource('candidates', 'candidatesController');
 //Attatchments routes
 
 Route::resource('attatchments', 'attatchmentsController');
+
+//Messages routes
+
+Route::resource('messages', 'messagesController');

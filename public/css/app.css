@@ -28246,6 +28246,13 @@ dl li {
 
 
 
+.navbar.default-layout-navbar .navbar-brand-wrapper .brand-logo-mini img {
+  width: calc(80px - 30px) !important;
+  height: 35px !important;
+  padding-left: 10px !important;
+  margin: auto !important;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

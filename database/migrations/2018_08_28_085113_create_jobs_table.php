@@ -22,7 +22,7 @@ class CreateJobsTable extends Migration
             $table->longText('qualifications');
             $table->string('location');
             $table->string('salary');
-            $table->date('dueDate');
+            $table->date('closingDate');
             $table->string('recruiter');
             $table->string('client');
             $table->string('category');

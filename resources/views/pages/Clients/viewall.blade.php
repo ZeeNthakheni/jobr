@@ -66,7 +66,7 @@
                   <td>{{$client->industry}}</td>
                   <td>{{$client->contact}}</td>
                   <td>{{$client->category}}</td>
-                  <td>{{$client->recruiter}}</td>
+                  <td>{{$recruiterName->find($client->recruiter)->name}}</td>
                   <td>{{$client->status}}</td>
                   <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
@@ -96,7 +96,7 @@
                 
             @else 
                <div class="card" style="height: 100px; text-align: center">
-                 <h1 style="padding-top: 25px">No Candidates Available</h1>
+                 <h1 style="padding-top: 25px">No Clients Available</h1>
                 </div> 
             @endif
             <br>          

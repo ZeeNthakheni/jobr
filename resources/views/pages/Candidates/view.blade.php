@@ -14,17 +14,17 @@
 <div class="col-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <p>ID Number: {{$candidate->idNumber}}</p>
-            <p>Disability: {{$candidate->disability}}</p>
-            <p>Residence: {{$candidate->residence}}</p>
-            <p>Contact Details: {{$candidate->contactDetails}}</p>
-            <p>Qualification: {{$candidate->qualification}}</p>
-            <p>Gender: {{$candidate->gender}}</p>
-            <p>Race: {{$candidate->race}}</p>
-            <p>Category: {{$candidate->candidateCategory}}</p>
-            <p>Experience: {{$candidate->experience}}</p>
-            <p>Status: {{$candidate->status}}</p>
-            <p>CV: {{$candidate->cvName}}</p>
+            <p><strong>ID Number: </strong>{{$candidate->idNumber}}</p>
+            <p><strong>Disability: </strong>{{$candidate->disability}}</p>
+            <p><strong>Residence: </strong>{{$candidate->residence}}</p>
+            <p><strong>Contact Details: </strong>{{$candidate->contactDetails}}</p>
+            <p><strong>Qualification: </strong>{{$candidate->qualification}}</p>
+            <p><strong>Gender: </strong>{{$candidate->gender}}</p>
+            <p><strong>Race: </strong>{{$candidate->race}}</p>
+            <p><strong>Category: </strong>{{$candidate->candidateCategory}}</p>
+            <p><strong>Experience: </strong>{{$candidate->experience}}</p>
+            <p><strong>Status: </strong>{{$candidate->status}}</p>
+            <p><strong>CV: </strong>{{$candidate->cvName}}</p>
         </div>           
     </div>
 </div>

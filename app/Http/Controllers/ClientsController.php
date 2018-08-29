@@ -26,7 +26,8 @@ class ClientsController extends Controller
     public function index()
     {
         $clients = Client::paginate(15);
-        return view('pages.clients.viewall')->with('clients',$clients);
+        $recruiterName = new User;
+        return view('pages.clients.viewall')->with(['clients'=>$clients,'recruiterName'=>$recruiterName]);
     }
 
     /**
@@ -56,7 +57,7 @@ class ClientsController extends Controller
         $client->industry = $request->input('industry');
         $client->location = $request->input('location');
         $client->contact = $request->input('contact');
-        $client->jobTitle = $request->input('jobTitle');
+        $client->jobTitle = 'None';
         $client->noOfEmployees = $request->input('noOfEmployees');
         $client->category = $request->input('category');
         $client->recruiter = $request->input('recruiter');
@@ -64,7 +65,7 @@ class ClientsController extends Controller
         //Save client
         $client->save();
         //Redirect
-        return redirect('/home')->with('success','client Created');
+        return redirect('/clients-all')->with('success','client Created');
     }
 
     /**
@@ -75,7 +76,8 @@ class ClientsController extends Controller
      */
     public function show(Client $client)
     {
-        //
+        $recruiterName = User::find($client->recruiter)->name;
+        return view('pages.clients.view')->with(['client'=>$client,'recruiterName'=>$recruiterName]);
     }
 
     /**
@@ -86,7 +88,9 @@ class ClientsController extends Controller
      */
     public function edit(Client $client)
     {
-        //
+        $userList = User::all();
+        $recruiterName = User::find($client->recruiter)->name;
+        return view('pages.clients.edit')->with(['client' => $client,'userList'=>$userList,'recruiterName'=>$recruiterName]);
     }
 
     /**
@@ -98,7 +102,21 @@ class ClientsController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        //
+        //Assign values
+        $client->company = $request->input('company');
+        $client->activities = $request->input('activities');
+        $client->industry = $request->input('industry');
+        $client->location = $request->input('location');
+        $client->contact = $request->input('contact');
+        $client->jobTitle = 'None';
+        $client->noOfEmployees = $request->input('noOfEmployees');
+        $client->category = $request->input('category');
+        $client->recruiter = $request->input('recruiter');
+        $client->status = $request->input('status');
+        //Save client
+        $client->save();
+        //Redirect
+        return redirect('/clients-all')->with('success','Client Updated');
     }
 
     /**
@@ -109,26 +127,35 @@ class ClientsController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
+        return redirect('/clients-all')->with('success','Client Deleted');
     }
 
     public function internship()
     {
-        return view('pages.clients.internship');
+        $clients = Client::where('category','Internship')->paginate(15);
+        $recruiterName = new User;
+        return view('pages.clients.internship')->with(['clients'=>$clients,'recruiterName'=>$recruiterName]);
     }
 
     public function learnership()
     {
-        return view('pages.clients.learnership');
+        $clients = Client::where('category','Learnership')->paginate(15);
+        $recruiterName = new User;
+        return view('pages.clients.learnership')->with(['clients'=>$clients,'recruiterName'=>$recruiterName]);
     }
 
     public function pending()
     {
-        return view('pages.clients.pending');
+        $clients = Client::where('category','Pending')->paginate(15);
+        $recruiterName = new User;
+        return view('pages.clients.pending')->with(['clients'=>$clients,'recruiterName'=>$recruiterName]);
     }
 
     public function professional()
     {
-        return view('pages.clients.professional');
+        $clients = Client::where('category','Professional')->paginate(15);
+        $recruiterName = new User;
+        return view('pages.clients.professional')->with(['clients'=>$clients,'recruiterName'=>$recruiterName]);
     }
 }

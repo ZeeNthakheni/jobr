@@ -24,12 +24,12 @@
               
                <div class="form-group">
                 <label for="activities">Core Business Activities</label>
-                <textarea class="form-control" id="activities" rows="4" name="activities"></textarea>
+                <textarea class="form-control" id="activities" rows="8" name="activities"></textarea>
               </div>
 
                <div class="form-group">
                 <label for="industry">Industry</label>
-                <textarea class="form-control" id="industry" name="industry" rows="4"></textarea>
+                <textarea class="form-control" id="industry" name="industry" rows="8"></textarea>
               </div>
 
                <div class="form-group">
@@ -41,11 +41,12 @@
                 <label for="contact">Contact Details</label>
                 <input type="text" class="form-control" id="contact" name="contact" placeholder="076 123 4560">
               </div>
-            
+            <!--
               <div class="form-group">
                 <label for="jobTitle">Job Title</label>
                 <input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="Programmer">
               </div>
+            -->
 
               <div class="form-group">
                 <label for="noOfEmployees">Total No of Employees Required</label>
@@ -56,9 +57,10 @@
                 <label for="category">Category</label>
                   <select class="form-control" id="category" name="category">
                     <option>Select</option>
-                    <option>Permanent</option>
+                    <option>Professional</option>
                     <option>Learnership</option>
-                    <option>Internship</option>                   
+                    <option>Internship</option>
+                    <option>Pending</option>                      
                   </select>
                 </div>
 
@@ -83,7 +85,7 @@
                 </div>
                 
                     <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
+                    <a href="/clients" class="btn btn-light float-right">Cancel</a>
 
                 </form>
             </div>   

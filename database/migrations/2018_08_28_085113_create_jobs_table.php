@@ -23,8 +23,8 @@ class CreateJobsTable extends Migration
             $table->string('location');
             $table->string('salary');
             $table->date('closingDate');
-            $table->string('recruiter');
-            $table->string('client');
+            $table->integer('user_id');
+            $table->integer('client_id');
             $table->string('category');
             $table->string('status');
             $table->timestamps();

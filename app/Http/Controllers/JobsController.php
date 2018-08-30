@@ -25,7 +25,9 @@ class JobsController extends Controller
      */
     public function index()
     {
-        return view('pages.jobs.viewall');
+        $jobs = job::paginate(15);
+        $recruiterName = new User;
+        return view('pages.jobs.viewall')->with(['jobs'=>$jobs,'recruiterName'=>$recruiterName]);
     }
 
     /**
@@ -76,7 +78,8 @@ class JobsController extends Controller
      */
     public function show(job $job)
     {
-        //
+        $recruiterName = User::find($job->recruiter)->name;
+        return view('pages.jobs.view')->with(['job'=>$job,'recruiterName'=>$recruiterName]);
     }
 
     /**
@@ -87,7 +90,9 @@ class JobsController extends Controller
      */
     public function edit(job $job)
     {
-        //
+        $userList = User::all();
+        $recruiterName = User::find($job->recruiter)->name;
+        return view('pages.jobs.edit')->with(['job' => $job,'userList'=>$userList,'recruiterName'=>$recruiterName]);
     }
 
     /**
@@ -99,7 +104,23 @@ class JobsController extends Controller
      */
     public function update(Request $request, job $job)
     {
-        //
+        //Assign values
+        $job->company = $request->input('company');
+        $job->jobTitle = $request->input('jobTitle');
+        $job->responsibilities = $request->input('responsibilities');
+        $job->attributes = $request->input('attributes');
+        $job->qualifications = $request->input('qualifications');
+        $job->location = $request->input('location');
+        $job->salary = $request->input('salary');
+        $job->closingDate = $request->input('closingDate');
+        $job->recruiter = $request->input('recruiter');
+        $job->client = $request->input('client');
+        $job->category = $request->input('category');
+        $job->status = $request->input('status');
+        //Save job
+        $job->save();
+        //Redirect
+        return redirect('/jobs-all')->with('success','job Updated');
     }
 
     /**
@@ -110,26 +131,35 @@ class JobsController extends Controller
      */
     public function destroy(job $job)
     {
-        //
+        $job->delete();
+        return redirect('/jobs-all')->with('success','Job Deleted');
     }
 
     public function internship()
     {
-        return view('pages.jobs.internship');
+        $jobs = job::where('category','Internship')->paginate(15);
+        $recruiterName = new User;
+        return view('pages.jobs.internship')->with(['jobs'=>$jobs,'recruiterName'=>$recruiterName]);
     }
 
     public function learnership()
     {
-        return view('pages.jobs.learnership');
+        $jobs = job::where('category','Learnership')->paginate(15);
+        $recruiterName = new User;
+        return view('pages.jobs.learnership')->with(['jobs'=>$jobs,'recruiterName'=>$recruiterName]);
     }
 
     public function pending()
     {
-        return view('pages.jobs.pending');
+        $jobs = job::where('status','Pending')->paginate(15);
+        $recruiterName = new User;
+        return view('pages.jobs.pending')->with(['jobs'=>$jobs,'recruiterName'=>$recruiterName]);
     }
 
     public function professional()
     {
-        return view('pages.jobs.professional');
+        $jobs = job::where('category','Professional')->paginate(15);
+        $recruiterName = new User;
+        return view('pages.jobs.professional')->with(['jobs'=>$jobs,'recruiterName'=>$recruiterName]);
     }
 }

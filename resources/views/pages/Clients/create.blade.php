@@ -27,9 +27,9 @@
                 <textarea class="form-control" id="activities" rows="8" name="activities"></textarea>
               </div>
 
-               <div class="form-group">
+              <div class="form-group">
                 <label for="industry">Industry</label>
-                <textarea class="form-control" id="industry" name="industry" rows="8"></textarea>
+                <input type="text" class="form-control" id="industry" name="industry" placeholder="Information Technology">
               </div>
 
                <div class="form-group">

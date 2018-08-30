@@ -30,11 +30,12 @@
 
                 <div class="form-group">
                     <label for="industry">Industry</label>
-                    <textarea class="form-control" id="industry" name="industry" rows="8">{{$client->industry}}</textarea>
+                    <input type="text" class="form-control" id="industry" name="industry" placeholder="Information Technology" value="{{$client->industry}}">
                 </div>
 
+
                 <div class="form-group">
-                    <label for="location">Location of business</label>
+                    <label for="location">Business Address</label>
                     <textarea class="form-control" id="location" name="location" rows="4">{{$client->location}}</textarea>
                 </div>
 

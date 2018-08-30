@@ -147,7 +147,7 @@ class ClientsController extends Controller
 
     public function pending()
     {
-        $clients = Client::where('category','Pending')->paginate(15);
+        $clients = Client::where('status','Pending')->paginate(15);
         $recruiterName = new User;
         return view('pages.clients.pending')->with(['clients'=>$clients,'recruiterName'=>$recruiterName]);
     }

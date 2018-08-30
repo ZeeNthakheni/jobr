@@ -23,7 +23,7 @@ class CreateClientsTable extends Migration
             $table->string('jobTitle');
             $table->string('noOfEmployees');
             $table->string('category');
-            $table->string('recruiter');
+            $table->integer('user_id');
             $table->string('status');
             $table->timestamps();
         });

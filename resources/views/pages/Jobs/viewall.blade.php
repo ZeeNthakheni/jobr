@@ -18,7 +18,7 @@
                   <h4 class="font-weight-normal mb-3">Active Jobs
                    
                   </h4>
-                  <h2 class="mb-5">200</h2>
+                  <h2 class="mb-5">{{$jobsActive}}</h2>
                   
                 </div>
               </div>
@@ -30,7 +30,7 @@
                   <h4 class="font-weight-normal mb-3">Pending Jobs
                   
                   </h4>
-                  <h2 class="mb-5">150</h2>
+                  <h2 class="mb-5">{{$jobsPending}}</h2>
                   
                 </div>
               </div>
@@ -39,10 +39,8 @@
               <div class="card bg-gradient-success card-img-holder text-white">
                 <div class="card-body">
                   <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">                                    
-                  <h4 class="font-weight-normal mb-3">Filled Jobs
-                   
-                  </h4>
-                  <h2 class="mb-5">100</h2>
+                  <h4 class="font-weight-normal mb-3">Filled Jobs</h4>
+                  <h2 class="mb-5">{{$jobsFilled}}</h2>
                   
                 </div>
               </div>

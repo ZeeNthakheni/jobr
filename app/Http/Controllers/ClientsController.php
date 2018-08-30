@@ -27,7 +27,16 @@ class ClientsController extends Controller
     {
         $clients = Client::paginate(15);
         $recruiterName = new User;
-        return view('pages.clients.viewall')->with(['clients'=>$clients,'recruiterName'=>$recruiterName]);
+
+        //Get Tab values
+        $clientObj = new Client;
+
+        $clientsActive = count($clientObj::where('status','Active')->get()) ;
+        $clientsPending = count($clientObj::where('status','Pending')->get()) ;
+        $clientsFilled = count($clientObj::where('status','Successful')->get()) ;
+
+        return view('pages.clients.viewall')->with(['clients'=>$clients,'recruiterName'=>$recruiterName,'clientsActive'=>$clientsActive
+        ,'clientsPending'=>$clientsPending,'clientsFilled'=>$clientsFilled]);
     }
 
     /**
@@ -135,27 +144,63 @@ class ClientsController extends Controller
     {
         $clients = Client::where('category','Internship')->paginate(15);
         $recruiterName = new User;
-        return view('pages.clients.internship')->with(['clients'=>$clients,'recruiterName'=>$recruiterName]);
+
+        //Get Tab values
+        $clientObj = new client;
+
+        $clientsActive = count($clientObj::where(['status'=>'Active','category'=>'Internship'])->get()) ;
+        $clientsPending = count($clientObj::where(['status'=>'Pending','category'=>'Internship'])->get()) ;
+        $clientsFilled = count($clientObj::where(['status'=>'Filled','category'=>'Internship'])->get()) ;
+
+        return view('pages.clients.internship')->with(['clients'=>$clients,'recruiterName'=>$recruiterName,'clientsActive'=>$clientsActive
+        ,'clientsPending'=>$clientsPending,'clientsFilled'=>$clientsFilled]);
     }
 
     public function learnership()
     {
         $clients = Client::where('category','Learnership')->paginate(15);
         $recruiterName = new User;
-        return view('pages.clients.learnership')->with(['clients'=>$clients,'recruiterName'=>$recruiterName]);
+
+        //Get Tab values
+        $clientObj = new client;
+
+        $clientsActive = count($clientObj::where(['status'=>'Active','category'=>'Learnership'])->get()) ;
+        $clientsPending = count($clientObj::where(['status'=>'Pending','category'=>'Learnership'])->get()) ;
+        $clientsFilled = count($clientObj::where(['status'=>'Filled','category'=>'Learnership'])->get()) ;
+
+        return view('pages.clients.learnership')->with(['clients'=>$clients,'recruiterName'=>$recruiterName,'clientsActive'=>$clientsActive
+        ,'clientsPending'=>$clientsPending,'clientsFilled'=>$clientsFilled]);
     }
 
     public function pending()
     {
         $clients = Client::where('status','Pending')->paginate(15);
         $recruiterName = new User;
-        return view('pages.clients.pending')->with(['clients'=>$clients,'recruiterName'=>$recruiterName]);
+
+        //Get Tab values
+        $clientObj = new client;
+
+        $clientsLearn = count($clientObj::where(['status'=>'Pending','category'=>'Learnership'])->get()) ;
+        $clientsProf = count($clientObj::where(['status'=>'Pending','category'=>'Professional'])->get()) ;
+        $clientsIntern = count($clientObj::where(['status'=>'Pending','category'=>'Internship'])->get()) ;
+        
+        return view('pages.clients.pending')->with(['clients'=>$clients,'recruiterName'=>$recruiterName,'clientsLearn'=>$clientsLearn
+        ,'clientsProf'=>$clientsProf,'clientsIntern'=>$clientsIntern]);
     }
 
     public function professional()
     {
         $clients = Client::where('category','Professional')->paginate(15);
         $recruiterName = new User;
-        return view('pages.clients.professional')->with(['clients'=>$clients,'recruiterName'=>$recruiterName]);
+
+        //Get Tab values
+        $clientObj = new client;
+
+        $clientsActive = count($clientObj::where(['status'=>'Active','category'=>'Professional'])->get()) ;
+        $clientsPending = count($clientObj::where(['status'=>'Pending','category'=>'Professional'])->get()) ;
+        $clientsFilled = count($clientObj::where(['status'=>'Filled','category'=>'Professional'])->get()) ;
+
+        return view('pages.clients.professional')->with(['clients'=>$clients,'recruiterName'=>$recruiterName,'clientsActive'=>$clientsActive
+        ,'clientsPending'=>$clientsPending,'clientsFilled'=>$clientsFilled]);
     }
 }

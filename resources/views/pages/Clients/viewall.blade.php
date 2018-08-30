@@ -15,7 +15,7 @@
                 <div class="card-body">
                   <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">
                   <h4 class="font-weight-normal mb-3">Active Clients</h4>
-                  <h2 class="mb-5">200</h2>
+                  <h2 class="mb-5">{{$clientsActive}}</h2>
                   
                 </div>
               </div>
@@ -25,7 +25,7 @@
                 <div class="card-body">
                   <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">                  
                   <h4 class="font-weight-normal mb-3">Pending Clients</h4>
-                  <h2 class="mb-5">150</h2>
+                  <h2 class="mb-5">{{$clientsPending}}</h2>
                   
                 </div>
               </div>
@@ -35,7 +35,7 @@
                 <div class="card-body">
                   <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">                                    
                   <h4 class="font-weight-normal mb-3">Filled Clients</h4>
-                  <h2 class="mb-5">100</h2>
+                  <h2 class="mb-5">{{$clientsFilled}}</h2>
                 </div>
               </div>
             </div>

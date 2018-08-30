@@ -26,7 +26,18 @@ class CandidatesController extends Controller
     public function index()
     {
         $candidates = Candidate::paginate(15);
-        return view('pages.candidates.candidates')->with('candidates',$candidates);
+
+
+        //Get Tab values
+        $candidateObj = new Candidate;
+
+        $candidateLearn = count($candidateObj::where(['candidateCategory'=>'Learnership'])->get()) ;
+        $candidateProf = count($candidateObj::where(['candidateCategory'=>'Professional'])->get()) ;
+        $candidateIntern = count($candidateObj::where(['candidateCategory'=>'Internship'])->get()) ;
+
+
+        return view('pages.candidates.candidates')->with(['candidates'=>$candidates,'candidateLearn'=>$candidateLearn
+        ,'candidateProf'=>$candidateProf,'candidateIntern'=>$candidateIntern]);
     }
 
     /**
@@ -224,30 +235,75 @@ class CandidatesController extends Controller
     public function placed()
     {
         $candidates = Candidate::where('status','Placed')->paginate(15);
-        return view('pages.candidates.candidates')->with('candidates',$candidates);
+        //Get Tab values
+        $candidateObj = new Candidate;
+
+        $candidateLearn = count($candidateObj::where(['candidateCategory'=>'Learnership'])->get()) ;
+        $candidateProf = count($candidateObj::where(['candidateCategory'=>'Professional'])->get()) ;
+        $candidateIntern = count($candidateObj::where(['candidateCategory'=>'Internship'])->get()) ;
+
+
+        return view('pages.candidates.candidates')->with(['candidates'=>$candidates,'candidateLearn'=>$candidateLearn
+        ,'candidateProf'=>$candidateProf,'candidateIntern'=>$candidateIntern]);
     }
     
     public function listed()
     {
         $candidates = Candidate::where('status','Listed')->paginate(15);
-        return view('pages.candidates.candidates')->with('candidates',$candidates);
+         //Get Tab values
+        $candidateObj = new Candidate;
+
+        $candidateLearn = count($candidateObj::where(['candidateCategory'=>'Learnership'])->get()) ;
+        $candidateProf = count($candidateObj::where(['candidateCategory'=>'Professional'])->get()) ;
+        $candidateIntern = count($candidateObj::where(['candidateCategory'=>'Internship'])->get()) ;
+
+
+        return view('pages.candidates.candidates')->with(['candidates'=>$candidates,'candidateLearn'=>$candidateLearn
+        ,'candidateProf'=>$candidateProf,'candidateIntern'=>$candidateIntern]);
     }
 
     public function pending()
     {
         $candidates = Candidate::where('status','Interview Pending')->paginate(15);
-        return view('pages.candidates.candidates')->with('candidates',$candidates);
+        //Get Tab values
+        $candidateObj = new Candidate;
+
+        $candidateLearn = count($candidateObj::where(['candidateCategory'=>'Learnership'])->get()) ;
+        $candidateProf = count($candidateObj::where(['candidateCategory'=>'Professional'])->get()) ;
+        $candidateIntern = count($candidateObj::where(['candidateCategory'=>'Internship'])->get()) ;
+
+
+        return view('pages.candidates.candidates')->with(['candidates'=>$candidates,'candidateLearn'=>$candidateLearn
+        ,'candidateProf'=>$candidateProf,'candidateIntern'=>$candidateIntern]);
     }
 
     public function shortlisted()
     {
         $candidates = Candidate::where('status','Shortlisted')->paginate(15);
-        return view('pages.candidates.candidates')->with('candidates',$candidates);
+        //Get Tab values
+        $candidateObj = new Candidate;
+
+        $candidateLearn = count($candidateObj::where(['candidateCategory'=>'Learnership'])->get()) ;
+        $candidateProf = count($candidateObj::where(['candidateCategory'=>'Professional'])->get()) ;
+        $candidateIntern = count($candidateObj::where(['candidateCategory'=>'Internship'])->get()) ;
+
+
+        return view('pages.candidates.candidates')->with(['candidates'=>$candidates,'candidateLearn'=>$candidateLearn
+        ,'candidateProf'=>$candidateProf,'candidateIntern'=>$candidateIntern]);
     }
 
     public function blacklisted()
     {
         $candidates = Candidate::where('status','Blacklisted')->paginate(15);
-        return view('pages.candidates.candidates')->with('candidates',$candidates);
+         //Get Tab values
+        $candidateObj = new Candidate;
+
+        $candidateLearn = count($candidateObj::where(['candidateCategory'=>'Learnership'])->get()) ;
+        $candidateProf = count($candidateObj::where(['candidateCategory'=>'Professional'])->get()) ;
+        $candidateIntern = count($candidateObj::where(['candidateCategory'=>'Internship'])->get()) ;
+
+
+        return view('pages.candidates.candidates')->with(['candidates'=>$candidates,'candidateLearn'=>$candidateLearn
+        ,'candidateProf'=>$candidateProf,'candidateIntern'=>$candidateIntern]);
     }
 }

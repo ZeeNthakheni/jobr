@@ -18,7 +18,7 @@
                   <h4 class="font-weight-normal mb-3">Professional
                    
                   </h4>
-                  <h2 class="mb-5">200</h2>
+                  <h2 class="mb-5">{{$clientsProf}}</h2>
                   
                 </div>
               </div>
@@ -30,7 +30,7 @@
                   <h4 class="font-weight-normal mb-3">Learnership
                   
                   </h4>
-                  <h2 class="mb-5">150</h2>
+                  <h2 class="mb-5">{{$clientsLearn}}</h2>
                   
                 </div>
               </div>
@@ -42,7 +42,7 @@
                   <h4 class="font-weight-normal mb-3">Internship 
                    
                   </h4>
-                  <h2 class="mb-5">100</h2>
+                  <h2 class="mb-5">{{$clientsIntern}}</h2>
                   
                 </div>
               </div>

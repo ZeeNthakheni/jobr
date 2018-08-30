@@ -24,7 +24,7 @@
             <p><strong>Category: </strong>{{$candidate->candidateCategory}}</p>
             <p><strong>Experience: </strong>{{$candidate->experience}}</p>
             <p><strong>Status: </strong>{{$candidate->status}}</p>
-            <p><strong>CV: </strong>{{$candidate->cvName}}</p>
+            <p><strong>Attatchment: </strong>{{$candidate->cvName}}</p>
         </div>           
     </div>
 </div>

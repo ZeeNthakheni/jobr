@@ -15,7 +15,7 @@
             <div class="card-body">
                 <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">
                 <h4 class="font-weight-normal mb-3">Internship Active Jobs</h4>
-                <h2 class="mb-5">200</h2>
+                <h2 class="mb-5">{{$jobsActive}}</h2>
                 </div>
             </div>
     </div>
@@ -24,7 +24,7 @@
             <div class="card-body">
                 <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">                  
                 <h4 class="font-weight-normal mb-3">Internship Pending Jobs</h4>
-                <h2 class="mb-5">150</h2>          
+                <h2 class="mb-5">{{$jobsPending}}</h2>          
             </div>
         </div>
     </div>
@@ -33,7 +33,7 @@
             <div class="card-body">
                 <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">                                    
                 <h4 class="font-weight-normal mb-3">Internship Filled Jobs</h4>
-                <h2 class="mb-5">100</h2>     
+                <h2 class="mb-5">{{$jobsFilled}}</h2>     
             </div>
         </div>
     </div>				

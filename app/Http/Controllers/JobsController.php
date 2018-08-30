@@ -28,7 +28,16 @@ class JobsController extends Controller
     {
         $jobs = job::paginate(15);
         $recruiterName = new User;
-        return view('pages.jobs.viewall')->with(['jobs'=>$jobs,'recruiterName'=>$recruiterName]);
+
+        //Get Tab values
+        $jobObj = new Job;
+
+        $jobsActive = count($jobObj::where('status','Active')->get()) ;
+        $jobsPending = count($jobObj::where('status','Pending')->get()) ;
+        $jobsFilled = count($jobObj::where('status','Filled')->get()) ;
+
+        return view('pages.jobs.viewall')->with(['jobs'=>$jobs,'recruiterName'=>$recruiterName,'jobsActive'=>$jobsActive
+        ,'jobsPending'=>$jobsPending,'jobsFilled'=>$jobsFilled]);
     }
 
     /**
@@ -142,27 +151,62 @@ class JobsController extends Controller
     {
         $jobs = job::where('category','Internship')->paginate(15);
         $recruiterName = new User;
-        return view('pages.jobs.internship')->with(['jobs'=>$jobs,'recruiterName'=>$recruiterName]);
+
+        //Get Tab values
+        $jobObj = new Job;
+
+        $jobsActive = count($jobObj::where(['status'=>'Active','category'=>'Internship'])->get()) ;
+        $jobsPending = count($jobObj::where(['status'=>'Pending','category'=>'Internship'])->get()) ;
+        $jobsFilled = count($jobObj::where(['status'=>'Filled','category'=>'Internship'])->get()) ;
+        
+        return view('pages.jobs.internship')->with(['jobs'=>$jobs,'recruiterName'=>$recruiterName,'jobsActive'=>$jobsActive
+        ,'jobsPending'=>$jobsPending,'jobsFilled'=>$jobsFilled]);
     }
 
     public function learnership()
     {
         $jobs = job::where('category','Learnership')->paginate(15);
         $recruiterName = new User;
-        return view('pages.jobs.learnership')->with(['jobs'=>$jobs,'recruiterName'=>$recruiterName]);
+        //Get Tab values
+        $jobObj = new Job;
+
+        $jobsActive = count($jobObj::where(['status'=>'Active','category'=>'Learnership'])->get()) ;
+        $jobsPending = count($jobObj::where(['status'=>'Pending','category'=>'Learnership'])->get()) ;
+        $jobsFilled = count($jobObj::where(['status'=>'Filled','category'=>'Learnership'])->get()) ;
+
+        return view('pages.jobs.learnership')->with(['jobs'=>$jobs,'recruiterName'=>$recruiterName,'jobsActive'=>$jobsActive
+        ,'jobsPending'=>$jobsPending,'jobsFilled'=>$jobsFilled]);
     }
 
     public function pending()
     {
         $jobs = job::where('status','Pending')->paginate(15);
         $recruiterName = new User;
-        return view('pages.jobs.pending')->with(['jobs'=>$jobs,'recruiterName'=>$recruiterName]);
+
+        //Get Tab values
+        $jobObj = new Job;
+
+        $jobsLearn = count($jobObj::where(['status'=>'Pending','category'=>'Learnership'])->get()) ;
+        $jobsProf = count($jobObj::where(['status'=>'Pending','category'=>'Professional'])->get()) ;
+        $jobsIntern = count($jobObj::where(['status'=>'Pending','category'=>'Internship'])->get()) ;
+
+        return view('pages.jobs.pending')->with(['jobs'=>$jobs,'recruiterName'=>$recruiterName,'jobsLearn'=>$jobsLearn
+        ,'jobsProf'=>$jobsProf,'jobsIntern'=>$jobsIntern]);
     }
 
     public function professional()
     {
         $jobs = job::where('category','Professional')->paginate(15);
         $recruiterName = new User;
-        return view('pages.jobs.professional')->with(['jobs'=>$jobs,'recruiterName'=>$recruiterName]);
+
+        //Get Tab values
+        $jobObj = new Job;
+
+        $jobsActive = count($jobObj::where(['status'=>'Active','category'=>'Professional'])->get()) ;
+        $jobsPending = count($jobObj::where(['status'=>'Pending','category'=>'Professional'])->get()) ;
+        $jobsFilled = count($jobObj::where(['status'=>'Filled','category'=>'Professional'])->get()) ;
+
+        return view('pages.jobs.professional')->with(['jobs'=>$jobs,'recruiterName'=>$recruiterName,'jobsActive'=>$jobsActive
+        ,'jobsPending'=>$jobsPending,'jobsFilled'=>$jobsFilled]);
     }
 }

@@ -19,7 +19,7 @@
                   <h4 class="font-weight-normal mb-3">Internship Active Clients
                    
                   </h4>
-                  <h2 class="mb-5">200</h2>
+                  <h2 class="mb-5">{{$clientsActive}}</h2>
                   
                 </div>
               </div>
@@ -31,7 +31,7 @@
                   <h4 class="font-weight-normal mb-3">Internship Pending Clients
                   
                   </h4>
-                  <h2 class="mb-5">150</h2>
+                  <h2 class="mb-5">{{$clientsPending}}</h2>
                   
                 </div>
               </div>
@@ -40,10 +40,8 @@
               <div class="card bg-gradient-success card-img-holder text-white">
                 <div class="card-body">
                   <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">                                    
-                  <h4 class="font-weight-normal mb-3">Internship Successful Clients
-                   
-                  </h4>
-                  <h2 class="mb-5">100</h2>
+                  <h4 class="font-weight-normal mb-3">Internship Successful Clients</h4>
+                  <h2 class="mb-5">{{$clientsFilled}}</h2>
                   
                 </div>
               </div>

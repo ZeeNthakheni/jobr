@@ -94,17 +94,6 @@
                           </select>
                         </div>
 
-                <div class="form-group">
-                    <label>CV Upload</label>
-                    <input type="file" name="cv" id="cv" class="file-upload-default">
-                    <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload CV" value="{{$candidate->cv}}">
-                        <span class="input-group-append">
-                          <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
-                        </span>
-                    </div>
-                </div>
-
                 <button type="submit" class="btn btn-gradient-primary mr-2">Update</button>
                 <a href="/candidates" class="btn btn-light float-right">Cancel</a>
             </form>

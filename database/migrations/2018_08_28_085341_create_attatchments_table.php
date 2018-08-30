@@ -15,8 +15,8 @@ class CreateAttatchmentsTable extends Migration
     {
         Schema::create('attatchments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cv')->default('None');
-            $table->string('cvName')->default('None');
+            $table->string('candidateFile');
+            $table->string('candidateFileName');
             $table->integer('candidate_id');
             $table->timestamps();
         });

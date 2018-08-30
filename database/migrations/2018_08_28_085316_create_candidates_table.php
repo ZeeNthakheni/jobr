@@ -26,8 +26,6 @@ class CreateCandidatesTable extends Migration
             $table->string('candidateCategory');
             $table->longText('experience');
             $table->string('status');
-            $table->string('cv')->default('None');
-            $table->string('cvName')->default('None');
             $table->timestamps();
         });
     }

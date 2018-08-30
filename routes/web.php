@@ -65,12 +65,16 @@ Route::get('/candidates/shortlisted','candidatesController@shortlisted');
 
 Route::get('/candidates/blacklisted','candidatesController@blacklisted');
 
+Route::DELETE('/candidates/{candidate}/delete','candidatesController@destroy');
+
 Route::resource('candidates', 'candidatesController');
 
 
 //Attatchments routes
 
 Route::resource('attatchments', 'attatchmentsController');
+
+Route::get('/attatchments/{attatchment}/download','attatchmentsController@download');
 
 //Messages routes
 

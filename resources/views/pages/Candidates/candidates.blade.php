@@ -8,7 +8,7 @@
         </span>
           Candidates Page
     </h3>
-    <a href="/candidates/create" class="btn btn-gradient-primary btn-rounded btn-fw float-right">Create Candidate</a>
+    <a href="/candidates/create" class="btn btn-gradient-primary btn-rounded btn-fw float-right">+Add Candidate</a>
 </div>
 <div class="row">
         <div class="col-md-4 stretch-card grid-margin">
@@ -100,15 +100,12 @@
                         <i class="mdi mdi-lead-pencil"></i>
                         Edit
                       </a>
-                      
-                      <a class="btn btn-gradient-danger btn-fw" href="/candidates/{{$candidate->id}}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
-                          <i class="mdi mdi-eraser"></i>
-                          Delete
-                      </a>
-                      <form id="delete-form" action="/candidates/{{$candidate->id}}" method="POST" style="display: none;">
+                      <form id="delete-form" action="/candidates/{{$candidate->id}}" method="POST">
                         @csrf
-                        @method('DELETE')
+                        @method('DELETE')  
+                      <button type="submit" class="btn btn-gradient-danger btn-fw"> <i class="mdi mdi-eraser"></i>Delete</button>
                       </form>
+                      
                     </div>
                   </td>                 
                 </tr>

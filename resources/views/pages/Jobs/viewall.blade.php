@@ -86,14 +86,14 @@
                         Edit
                       </a>
                       
-                      <a class="btn btn-gradient-danger btn-fw" href="/jobs/{{$job->id}}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
-                          <i class="mdi mdi-eraser"></i>
-                          Delete
-                      </a>
-                      <form id="delete-form" action="/jobs/{{$job->id}}" method="POST" style="display: none;">
+                      <form id="delete-form" action="/jobs/{{$job->id}}" method="POST">
                         @csrf
-                        @method('DELETE')
+                        @method('DELETE')  
+                      <button type="submit" class="btn btn-gradient-danger btn-fw"> <i class="mdi mdi-eraser"></i>Delete</button>
                       </form>
+                      
+                
+
                     </div>
                   </td>                 
                 </tr>

@@ -8,6 +8,7 @@
         </span>
           Attachments Page
     </h3>
+    <a href="/attatchments/create" class="btn btn-gradient-success btn-rounded btn-fw float-right">+Add Attatchment</a>
 </div>
 
 <div class="row">
@@ -15,9 +16,7 @@
           <div class="card bg-gradient-danger card-img-holder text-white">
             <div class="card-body">
               <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">
-              <h4 class="font-weight-normal mb-3">Professional
-               
-              </h4>
+              <h4 class="font-weight-normal mb-3">Professional</h4>
               <h2 class="mb-5">200</h2>
               
             </div>
@@ -27,9 +26,7 @@
           <div class="card bg-gradient-info card-img-holder text-white">
             <div class="card-body">
               <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">                  
-              <h4 class="font-weight-normal mb-3">Learnership
-              
-              </h4>
+              <h4 class="font-weight-normal mb-3">Learnership</h4>
               <h2 class="mb-5">150</h2>
               
             </div>
@@ -39,13 +36,66 @@
           <div class="card bg-gradient-success card-img-holder text-white">
             <div class="card-body">
               <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">                                    
-              <h4 class="font-weight-normal mb-3">Internship 
-               
-              </h4>
+              <h4 class="font-weight-normal mb-3">Internship</h4>
               <h2 class="mb-5">100</h2>
               
             </div>
           </div>
         </div>           
 </div>
+
+@if (count($attatchments)>0)
+  
+    <div class="card">
+      <div class="card-body">
+        <div style="overflow-x:auto;">  
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Attachment</th>
+                <th>Candidate Name</th>
+                <th>Date Created</th>
+              </tr>
+            </thead>
+              <tbody>
+                @foreach ($attatchments as $attatchment)
+                <tr>
+                  <td>{{$attatchment->candidateFileName}}</td>
+                  <td>{{$attatchment->candidate->name}}</td>
+                  <td>{{$attatchment->created_at}}</td>
+                  <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+
+                      <a href="/attatchments/{{$attatchment->id}}" class="btn btn-gradient-info btn-fw" title="View" >
+                        <i class="mdi mdi-arrow-down"></i>
+                        Download
+                      </a>
+
+                      <a href="/attatchments/{{$attatchment->id}}/edit" class="btn btn-gradient-success btn-fw" title="Edit">
+                        <i class="mdi mdi-lead-pencil"></i>
+                        Edit
+                      </a>
+                      
+                      <form id="delete-form" action="/attatchments/{{$attatchment->id}}" method="POST">
+                        @csrf
+                        @method('DELETE')  
+                      <button type="submit" class="btn btn-gradient-danger btn-fw"> <i class="mdi mdi-eraser"></i>Delete</button>
+                      </form>
+                    </div>
+                  </td>                 
+                </tr>
+                @endforeach
+              </tbody> 
+            </table>   
+                
+            @else 
+               <div class="card" style="height: 100px; text-align: center">
+                 <h1 style="padding-top: 25px">No attatchments Available</h1>
+                </div> 
+            @endif
+            <br>          
+            {{ $attatchments->links() }}
+      </div>
+    </div>
+  </div>
 @endsection

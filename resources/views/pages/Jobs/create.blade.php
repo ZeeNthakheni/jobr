@@ -49,7 +49,7 @@
 
         <div class="form-group">
           <label for="salary">Salary</label>
-          <input type="text" class="form-control" id="salary" name="salary" placeholder="10 000">
+          <input type="text" class="form-control" id="salary" name="salary" placeholder="">
         </div>
 
 

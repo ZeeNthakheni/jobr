@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Candidate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Attatchment;
 
 class CandidatesController extends Controller
 {
@@ -69,32 +70,10 @@ class CandidatesController extends Controller
             'race' => 'required',
             'candidateCategory' => 'required',
             'experience' => 'required',
-            'status' => 'required',
-            'cv' => 'file|nullable|max:1999' 
+            'status' => 'required' 
         ]);
 
-        //Handle File Upload
-        if($request->hasFile('cv')){
-
-            //Get filename with extension
-            $fileNameWithExt = $request->file('cv')->getClientOriginalName();
-            //Get filename
-            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-            //Get file extension 
-            $fileExt = $request->file('cv')->getClientOriginalExtension();
-            //Filename to store
-            $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
-            //Upload Image
-            $path = $request->file('cv')->storeAs('public/CVs',$fileNameToStore);
-            // run php artisan storage:link to link storage folder with public, run only once.
-
-            //Get Actual file name to store in database
-            $cv_Name = $request->file('cv')->getClientOriginalName();
-        }
-        else{
-            $cv_Name = 'None';
-            $fileNameToStore = 'None';
-        }
+    
 
         //Create candidate
         $candidate = new Candidate;
@@ -110,11 +89,11 @@ class CandidatesController extends Controller
         $candidate->candidateCategory = $request->input('candidateCategory');
         $candidate->experience = $request->input('experience');
         $candidate->status = $request->input('status');
-        $candidate->cv = $fileNameToStore;
-        $candidate->cvName = $cv_Name;
-        
+     
         //Save candidate
         $candidate->save();
+
+
         //Redirect
         return redirect('/candidates')->with('success','Candidate Created');
     }
@@ -127,8 +106,9 @@ class CandidatesController extends Controller
      */
     public function show(Candidate $candidate)
     {
+        $attatchments = $candidate->attatchment;
         
-        return view('pages.candidates.view')->with('candidate',$candidate);
+        return view('pages.candidates.view')->with('candidate',$candidate)->with('attatchments',$attatchments);
     }
 
     /**
@@ -162,27 +142,9 @@ class CandidatesController extends Controller
             'candidateCategory' => 'required',
             'experience' => 'required',
             'status' => 'required',
-            'cv' => 'file|nullable|max:1999' 
         ]);
 
-        //Handle File Upload
-        if($request->hasFile('cv')){
-
-            //Get filename with extension
-            $fileNameWithExt = $request->file('cv')->getClientOriginalName();
-            //Get filename
-            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-            //Get file extension 
-            $fileExt = $request->file('cv')->getClientOriginalExtension();
-            //Filename to store
-            $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
-            //Upload Image
-            $path = $request->file('cv')->storeAs('public/CVs',$fileNameToStore);
-            // run php artisan storage:link to link storage folder with public, run only once.
-
-            //Get Actual file name to store in database
-            $cv_Name = $request->file('cv')->getClientOriginalName();
-        }
+       
 
         //Assign values
         $candidate->name = $request->input('name');
@@ -197,18 +159,6 @@ class CandidatesController extends Controller
         $candidate->experience = $request->input('experience');
         $candidate->status = $request->input('status');
 
-        if($request->hasFile('cv')){
-
-            if($candidate->cv != 'None'){
-            //Delete old cv
-            Storage::delete('public/CVs/'.$candidate->fileNameToStore);
-            } 
-
-              //Assign new cv
-              $candidate->cv = $fileNameToStore;  
-              $candidate->cvName = $cv_Name;
-            }
-        
         //Save candidate
         $candidate->save();
         //Redirect
@@ -223,6 +173,9 @@ class CandidatesController extends Controller
      */
     public function destroy(Candidate $candidate)
     {
+
+        //dd($candidate);
+
         //Delete image only if its not noimage
         if($candidate->cv != 'None'){
            //Delete image

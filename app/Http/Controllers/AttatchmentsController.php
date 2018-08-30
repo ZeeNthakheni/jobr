@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Attatchment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Candidate;
 
 class AttatchmentsController extends Controller
 {
@@ -24,7 +26,8 @@ class AttatchmentsController extends Controller
      */
     public function index()
     {
-        return view('pages.attatchments.attatchments');
+        $attatchments = Attatchment::paginate(10);
+        return view('pages.attatchments.attatchments')->with('attatchments',$attatchments);
     }
 
     /**
@@ -34,7 +37,8 @@ class AttatchmentsController extends Controller
      */
     public function create()
     {
-        //
+        $candidates = Candidate::all();
+        return view('pages.attatchments.create')->with('candidates',$candidates);
     }
 
     /**
@@ -45,7 +49,36 @@ class AttatchmentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this -> validate($request,[
+            'candidateFile' => 'required|max:7999',
+            'candidate_id' => 'required'
+         ]);
+
+      
+        //Get filename with extension
+        $fileNameWithExt = $request->file('candidateFile')->getClientOriginalName();
+        //Get filename
+        $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+        //Get file extension 
+        $fileExt = $request->file('candidateFile')->getClientOriginalExtension();
+        //Filename to store
+        $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
+        //Upload Image
+        $path = $request->file('candidateFile')->storeAs('public/CandidateFiles',$fileNameToStore);
+        // run php artisan storage:link to link storage folder with public, run only once.
+        
+
+        //Create Post
+        $attatchment = new Attatchment;
+        //Assign values
+        $attatchment->candidateFileName = $request->file('candidateFile')->getClientOriginalName();
+        $attatchment->candidate_id = $request->input('candidate_id');
+        $attatchment->candidateFile = $fileNameToStore;
+        
+        //Save Post
+        $attatchment->save();
+
+        return redirect('/attatchments')->with('success','Attatchment Added');
     }
 
     /**
@@ -67,7 +100,8 @@ class AttatchmentsController extends Controller
      */
     public function edit(Attatchment $attatchment)
     {
-        //
+           
+        return view('pages.attatchments.edit')->with('attatchment',$attatchment);
     }
 
     /**
@@ -79,7 +113,31 @@ class AttatchmentsController extends Controller
      */
     public function update(Request $request, Attatchment $attatchment)
     {
-        //
+        $this -> validate($request,[
+            'candidateFile' => 'required|max:7999'
+        ]);
+
+        //Get filename with extension
+        $fileNameWithExt = $request->file('candidateFile')->getClientOriginalName();
+        //Get filename
+        $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+        //Get file extension 
+        $fileExt = $request->file('candidateFile')->getClientOriginalExtension();
+        //Filename to store
+        $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
+        //Upload Image
+        $path = $request->file('candidateFile')->storeAs('public/CandidateFiles',$fileNameToStore);
+        // run php artisan storage:link to link storage folder with public, run only once.
+           
+        //Assign values
+        $attatchment->candidateFileName = $request->file('candidateFile')->getClientOriginalName();
+        $attatchment->candidateFile = $fileNameToStore;
+        
+        //Save attatchment
+        $attatchment->save(); 
+
+        $attatchments = Attatchment::paginate(10);
+        return redirect('/attatchments')->with(['attatchments'=>$attatchments,'success'=>'Attatchment Updated']);
     }
 
     /**
@@ -90,6 +148,20 @@ class AttatchmentsController extends Controller
      */
     public function destroy(Attatchment $attatchment)
     {
-        //
+        $pathToFile = public_path().'\storage\CVs\\'.$attatchment->candidateFile;
+
+       
+        Storage::delete($pathToFile);
+        $attatchment->delete();
+        
+        return back()->with('success','Attatchment Deleted');
+    }
+
+    public function download(Attatchment $attatchment)
+    {
+        //dd($attatchment);
+        $pathToFile = public_path().'\storage\CandidateFiles\\'.$attatchment->candidateFile;
+        return response()->download($pathToFile);
+        
     }
 }

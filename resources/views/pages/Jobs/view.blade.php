@@ -22,7 +22,7 @@
             <p><strong>Salary: </strong>{{$job->salary}}</p>
             <p><strong>Closing Date: </strong> {{$job->closingDate}}</p>
             <p><strong>Recruiter: </strong> {{$recruiterName}}</p>
-            <p><strong>Client: </strong>{{$job->client}}</p>
+            <p><strong>Client: </strong>{{$job->client->company}}</p>
             <p><strong>Category: </strong>{{$job->category}}</p>
             <p><strong>Status: </strong>{{$job->status}}</p>
         </div>           

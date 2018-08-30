@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\job;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
+use App\Client;
 
 class JobsController extends Controller
 {
@@ -38,7 +39,8 @@ class JobsController extends Controller
     public function create()
     {
         $userList = User::all();
-        return view('pages.jobs.create')->with('userList',$userList);
+        $clientList = Client::all();
+        return view('pages.jobs.create')->with(['userList'=>$userList,'clientList'=>$clientList]);
     }
 
     /**
@@ -60,14 +62,14 @@ class JobsController extends Controller
         $job->location = $request->input('location');
         $job->salary = $request->input('salary');
         $job->closingDate = $request->input('closingDate');
-        $job->recruiter = $request->input('recruiter');
-        $job->client = $request->input('client');
+        $job->user_id = $request->input('user_id');
+        $job->client_id = $request->input('client_id');
         $job->category = $request->input('category');
         $job->status = $request->input('status');
         //Save job
         $job->save();
         //Redirect
-        return redirect('/home')->with('success','job Created');
+        return redirect('/jobs-all')->with('success','job Created');
     }
 
     /**
@@ -78,7 +80,7 @@ class JobsController extends Controller
      */
     public function show(job $job)
     {
-        $recruiterName = User::find($job->recruiter)->name;
+        $recruiterName = User::find($job->user_id)->name;
         return view('pages.jobs.view')->with(['job'=>$job,'recruiterName'=>$recruiterName]);
     }
 
@@ -91,8 +93,9 @@ class JobsController extends Controller
     public function edit(job $job)
     {
         $userList = User::all();
-        $recruiterName = User::find($job->recruiter)->name;
-        return view('pages.jobs.edit')->with(['job' => $job,'userList'=>$userList,'recruiterName'=>$recruiterName]);
+        $recruiterName = User::find($job->user_id)->name;
+        $clientList = Client::all();
+        return view('pages.jobs.edit')->with(['job' => $job,'userList'=>$userList,'clientList'=>$clientList,'recruiterName'=>$recruiterName]);
     }
 
     /**
@@ -113,8 +116,8 @@ class JobsController extends Controller
         $job->location = $request->input('location');
         $job->salary = $request->input('salary');
         $job->closingDate = $request->input('closingDate');
-        $job->recruiter = $request->input('recruiter');
-        $job->client = $request->input('client');
+        $job->user_id = $request->input('user_id');
+        $job->client_id = $request->input('client_id');
         $job->category = $request->input('category');
         $job->status = $request->input('status');
         //Save job

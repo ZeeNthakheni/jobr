@@ -73,8 +73,8 @@
                   <td>{{$job->company}}</td>
                   <td>{{$job->location}}</td>
                   <td>{{$job->closingDate}}</td>
-                  <td>{{$recruiterName->find($job->recruiter)->name}}</td>
-                  <td>{{$job->client}}</td>
+                  <td>{{$job->user->name}}</td>
+                  <td>{{$job->client->company}}</td>
                   <td>{{$job->category}}</td>
                   <td>{{$job->status}}</td>
                   <td>

@@ -62,9 +62,9 @@
 
         <div class="form-group">
           <label for="recruiter">Recruiter</label>
-          <select class="form-control" id="recruiter" name="recruiter">
-            <option value="{{$job->recruiter}}">{{$recruiterName}}</option>
-            <option disabled>---------------</option>
+          <select class="form-control" id="recruiter" name="user_id">
+            <option value="{{$job->user->id}}">{{$recruiterName}}</option>
+            <option disabled >---------------</option>
             @foreach ($userList as $user)
             <option value="{{$user->id}}">{{$user->name}}</option>   
             @endforeach
@@ -73,11 +73,12 @@
                 
         <div class="form-group">
           <label for="client">Client</label>
-            <select class="form-control" id="client" name="client">
-                <option>{{$job->client}}</option>
+            <select class="form-control" id="client" name="client_id">
+                <option value="{{$job->client_id}}">{{$job->client->company}}</option>
                 <option disabled>---------------</option>
-                <option>Khano Consulting Services</option>
-                <option>BizzWorks</option>   
+                @foreach ($clientList as $client)
+                <option value="{{$client->id}}">{{$client->company}}</option>   
+                @endforeach 
             </select>
         </div>
 
@@ -86,7 +87,7 @@
             <select class="form-control" id="category" name="category">
                 <option>{{$job->category}}</option>
                 <option disabled>---------------</option>
-                <option>Permanent</option>
+                <option>Professional</option>
                 <option>Learnership</option>
                 <option>Internship</option>   
             </select>

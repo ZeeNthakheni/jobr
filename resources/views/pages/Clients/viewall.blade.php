@@ -66,7 +66,7 @@
                   <td>{{$client->industry}}</td>
                   <td>{{$client->contact}}</td>
                   <td>{{$client->category}}</td>
-                  <td>{{$recruiterName->find($client->recruiter)->name}}</td>
+                  <td>{{$recruiterName->find($client->user_id)->name}}</td>
                   <td>{{$client->status}}</td>
                   <td>
                     <div class="btn-group" role="group" aria-label="Basic example">

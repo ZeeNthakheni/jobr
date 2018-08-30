@@ -60,7 +60,7 @@ class ClientsController extends Controller
         $client->jobTitle = 'None';
         $client->noOfEmployees = $request->input('noOfEmployees');
         $client->category = $request->input('category');
-        $client->recruiter = $request->input('recruiter');
+        $client->user_id = $request->input('user_id');
         $client->status = $request->input('status');
         //Save client
         $client->save();
@@ -76,7 +76,7 @@ class ClientsController extends Controller
      */
     public function show(Client $client)
     {
-        $recruiterName = User::find($client->recruiter)->name;
+        $recruiterName = User::find($client->user_id)->name;
         return view('pages.clients.view')->with(['client'=>$client,'recruiterName'=>$recruiterName]);
     }
 
@@ -89,7 +89,7 @@ class ClientsController extends Controller
     public function edit(Client $client)
     {
         $userList = User::all();
-        $recruiterName = User::find($client->recruiter)->name;
+        $recruiterName = User::find($client->user_id)->name;
         return view('pages.clients.edit')->with(['client' => $client,'userList'=>$userList,'recruiterName'=>$recruiterName]);
     }
 
@@ -111,7 +111,7 @@ class ClientsController extends Controller
         $client->jobTitle = 'None';
         $client->noOfEmployees = $request->input('noOfEmployees');
         $client->category = $request->input('category');
-        $client->recruiter = $request->input('recruiter');
+        $client->user_id = $request->input('user_id');
         $client->status = $request->input('status');
         //Save client
         $client->save();

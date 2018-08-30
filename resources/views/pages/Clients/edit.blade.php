@@ -7,7 +7,7 @@
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
             <i class="mdi mdi-home"></i>                 
         </span>
-            Edit Candidate
+            Edit Client
     </h3>
 </div>
 
@@ -68,8 +68,8 @@
 
                 <div class="form-group">
                     <label for="recruiter">Recruiter</label>
-                    <select class="form-control" id="recruiter" name="recruiter">
-                        <option value="{{$client->recruiter}}">{{$recruiterName}}</option>
+                    <select class="form-control" id="recruiter" name="user_id">
+                        <option value="{{$client->user_id}}">{{$recruiterName}}</option>
                         <option disabled>---------------</option>
                         @foreach ($userList as $user)
                         <option value="{{$user->id}}">{{$user->name}}</option>   

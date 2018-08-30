@@ -66,7 +66,7 @@
 
               <div class="form-group">
                 <label for="recruiter">Recruiter</label>
-                  <select class="form-control" id="recruiter" name="recruiter">
+                  <select class="form-control" id="recruiter" name="user_id">
                     <option>Select</option>
                     @foreach ($userList as $user)
                     <option value="{{$user->id}}">{{$user->name}}</option>   

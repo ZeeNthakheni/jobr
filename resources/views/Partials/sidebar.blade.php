@@ -5,6 +5,7 @@
           <li class="nav-item nav-profile">
             <a href="/user-view" class="nav-link">
               <div class="nav-profile-image">
+                @if( !empty(Auth::user()->userInfo))
                   @if (Auth::user()->userInfo->proPicture != 'None')
                       <img class="rounded" src="/storage/UserImages/{{Auth::user()->userInfo->proPicture}}" alt="image" style="max-width:250px">
                       <br>
@@ -14,14 +15,23 @@
                       <br>
                       <br>
                   @endif
+                @else
+                <img class="rounded" src="{{ asset('storage/UserImages/no_profile.png') }}" alt="image">
+                      <br>
+                      <br>
+                @endif
                 <span class="login-status online"></span> <!--change to offline or busy as needed-->              
               </div>
               <div class="nav-profile-text d-flex flex-column">
                 <span class="font-weight-bold mb-2">{{Auth::user()->name}}</span>
-                @if (Auth::user()->userInfo->position != 'None')
-                    <span class="text-secondary text-small">{{Auth::user()->userInfo->position}}</span>  
+                @if( !empty(Auth::user()->userInfo))
+                  @if (Auth::user()->userInfo->position != 'None')
+                      <span class="text-secondary text-small">{{Auth::user()->userInfo->position}}</span>  
+                  @else
+                      <span class="text-secondary text-small">-</span>
+                  @endif
                 @else
-                    <span class="text-secondary text-small">-</span>
+                <span class="text-secondary text-small">-</span>
                 @endif
                 
               </div>

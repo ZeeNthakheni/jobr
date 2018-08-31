@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\UserInfo;
 
 class UsersController extends Controller
 {
@@ -54,7 +55,22 @@ class UsersController extends Controller
 
         //Create user
         $user = Auth::user();
-        $userInfo = $user->userInfo;
+        
+        if(empty($userInfo = $user->userInfo)){
+            $info = new UserInfo;
+            $info->user_id = $user->id;
+            $info->position = 'None';
+            $info->proPicture = 'None';
+            $info->proPictureName = 'None';
+
+            $userInfo = $info;
+            $info->save();
+        }else{
+          $userInfo = $user->userInfo;  
+        }
+
+        
+        
         //Assign values
         $user->name = $request->input('name');
         $user->email = $request->input('email');

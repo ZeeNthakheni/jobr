@@ -21,15 +21,21 @@
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <div class="nav-profile-img">
+                  @if( !empty(Auth::user()->userInfo))
                   @if (Auth::user()->userInfo->proPicture != 'None')
                       <img class="rounded" src="/storage/UserImages/{{Auth::user()->userInfo->proPicture}}" alt="image" style="max-width:250px">
                       <br>
                       <br> 
-                   @else
+                  @else
                       <img class="rounded" src="{{ asset('storage/UserImages/no_profile.png') }}" alt="image">
                       <br>
                       <br>
                   @endif
+                @else
+                <img class="rounded" src="{{ asset('storage/UserImages/no_profile.png') }}" alt="image">
+                      <br>
+                      <br>
+                @endif
                 <span class="availability-status online"></span>             
               </div>
               <div class="nav-profile-text">

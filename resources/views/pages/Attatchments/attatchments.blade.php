@@ -8,7 +8,7 @@
         </span>
           Attachments Page
     </h3>
-    <a href="/attatchments/create" class="btn btn-gradient-success btn-rounded btn-fw float-right">+Add Attatchment</a>
+    <a href="/attatchments-create" class="btn btn-gradient-success btn-rounded btn-fw float-right">+Add Attatchment</a>
 </div>
 
 <div class="row">
@@ -16,8 +16,8 @@
           <div class="card bg-gradient-danger card-img-holder text-white">
             <div class="card-body">
               <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">
-              <h4 class="font-weight-normal mb-3">Professional</h4>
-              <h2 class="mb-5">200</h2>
+              <h4 class="font-weight-normal mb-3">Professional Attatchments</h4>
+              <h2 class="mb-5">{{$attatchmentProfessional}}</h2>
               
             </div>
           </div>
@@ -26,8 +26,8 @@
           <div class="card bg-gradient-info card-img-holder text-white">
             <div class="card-body">
               <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">                  
-              <h4 class="font-weight-normal mb-3">Learnership</h4>
-              <h2 class="mb-5">150</h2>
+              <h4 class="font-weight-normal mb-3">Learnership Attatchments</h4>
+              <h2 class="mb-5">{{$attatchmenLearnership}}</h2>
               
             </div>
           </div>
@@ -36,8 +36,8 @@
           <div class="card bg-gradient-success card-img-holder text-white">
             <div class="card-body">
               <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">                                    
-              <h4 class="font-weight-normal mb-3">Internship</h4>
-              <h2 class="mb-5">100</h2>
+              <h4 class="font-weight-normal mb-3">Internship Attatchments</h4>
+              <h2 class="mb-5">{{$attatchmentInternship}}</h2>
               
             </div>
           </div>
@@ -54,6 +54,7 @@
               <tr>
                 <th>Attachment</th>
                 <th>Candidate Name</th>
+                <th>Candidate Category</th>
                 <th>Date Created</th>
               </tr>
             </thead>
@@ -62,11 +63,12 @@
                 <tr>
                   <td>{{$attatchment->candidateFileName}}</td>
                   <td>{{$attatchment->candidate->name}}</td>
+                  <td>{{$attatchment->candidate->candidateCategory}}</td>
                   <td>{{$attatchment->created_at}}</td>
                   <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
 
-                      <a href="/attatchments/{{$attatchment->id}}" class="btn btn-gradient-info btn-fw" title="View" >
+                      <a href="/attatchments/{{$attatchment->id}}/download" class="btn btn-gradient-info btn-fw" title="View" >
                         <i class="mdi mdi-arrow-down"></i>
                         Download
                       </a>

@@ -33,8 +33,8 @@
               </div>
 
                <div class="form-group">
-                <label for="location">Location of business</label>
-                <textarea class="form-control" id="location" name="location" rows="4"></textarea>
+                <label for="location">Business Address</label>
+                <textarea class="form-control" id="location" name="location" rows="6"></textarea>
               </div>
 
               <div class="form-group">
@@ -55,8 +55,7 @@
 
               <div class="form-group">
                 <label for="category">Category</label>
-                  <select class="form-control" id="category" name="category">
-                    <option>Select</option>
+                  <select class="form-control" id="category" name="category" aria-placeholder="Select">
                     <option>Professional</option>
                     <option>Learnership</option>
                     <option>Internship</option>
@@ -66,8 +65,7 @@
 
               <div class="form-group">
                 <label for="recruiter">Recruiter</label>
-                  <select class="form-control" id="recruiter" name="user_id">
-                    <option>Select</option>
+                  <select class="form-control" id="recruiter" name="user_id" aria-placeholder="Select">
                     @foreach ($userList as $user)
                     <option value="{{$user->id}}">{{$user->name}}</option>   
                     @endforeach
@@ -76,8 +74,7 @@
                 
                 <div class="form-group">
                 <label for="status">Status</label>
-                  <select class="form-control" id="status" name="status">
-                    <option>Select</option>
+                  <select class="form-control" id="status" name="status" aria-placeholder="Select">
                     <option>Active</option>
                     <option>Pending</option>
                     <option>Successful</option>  

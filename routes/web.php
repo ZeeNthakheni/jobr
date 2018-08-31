@@ -55,6 +55,8 @@ Route::get('/clients-professional','clientsController@professional');
 Route::resource('clients', 'clientsController');
 
 //Candidates routes
+Route::get('/candidates-create','candidatesController@create');
+
 Route::get('/candidates/placed','candidatesController@placed');
 
 Route::get('/candidates/listed','candidatesController@listed');
@@ -74,8 +76,16 @@ Route::resource('candidates', 'candidatesController');
 
 Route::resource('attatchments', 'attatchmentsController');
 
+Route::get('/attatchments-create','attatchmentsController@create');
+
 Route::get('/attatchments/{attatchment}/download','attatchmentsController@download');
 
 //Messages routes
 
 //Route::resource('messages', 'messagesController');
+
+//User routes
+
+Route::get('/user-view','usersController@view');
+
+Route::PATCH('/user-update/{user}','usersController@update');

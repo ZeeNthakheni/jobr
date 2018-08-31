@@ -173,14 +173,15 @@ class CandidatesController extends Controller
      */
     public function destroy(Candidate $candidate)
     {
-
-        //dd($candidate);
-
-        //Delete image only if its not noimage
-        if($candidate->cv != 'None'){
-           //Delete image
-           Storage::delete('public/CVs/'.$candidate->cv);
+        if(count($candidate->attatchment)>0){
+            foreach($candidate->attatchment as $file)
+            {
+                Storage::delete('public/CandidateFiles/'.$file->candidateFile);
+                $file->delete();  
+            }
         }
+        
+        
         $candidate->delete();
         return redirect('/candidates')->with('success','Candidate Deleted');
     }

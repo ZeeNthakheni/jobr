@@ -26,8 +26,33 @@ class AttatchmentsController extends Controller
      */
     public function index()
     {
+        //Get All attatchments
+        $attatchmentObj = Attatchment::all();
+
+        $attatchmentProfessional = 0;
+        $attatchmenLearnership = 0;
+        $attatchmentInternship = 0;
+        //Find and sort category for attatcment candidate
+        foreach($attatchmentObj as $obj)
+        {
+            if($obj->candidate->candidateCategory == 'Professional'){
+                    $attatchmentProfessional++;
+            }
+            if($obj->candidate->candidateCategory == 'Learnership'){
+                $attatchmenLearnership++;
+            }
+            if($obj->candidate->candidateCategory == 'Internship'){
+                $attatchmentInternship++;
+            }
+        }
+        
+        
+        
+
         $attatchments = Attatchment::paginate(10);
-        return view('pages.attatchments.attatchments')->with('attatchments',$attatchments);
+        return view('pages.attatchments.attatchments')->with(['attatchments'=>$attatchments, 'attatchmentProfessional'=>$attatchmentProfessional, 
+        'attatchmenLearnership'=>$attatchmenLearnership,
+        'attatchmentInternship'=>$attatchmentInternship]);
     }
 
     /**
@@ -130,6 +155,9 @@ class AttatchmentsController extends Controller
         // run php artisan storage:link to link storage folder with public, run only once.
            
         //Assign values
+        if(Storage::exists('public/CandidateFiles/'.$attatchment->candidateFile)){
+            Storage::delete('public/CandidateFiles/'.$attatchment->candidateFile); 
+        }
         $attatchment->candidateFileName = $request->file('candidateFile')->getClientOriginalName();
         $attatchment->candidateFile = $fileNameToStore;
         

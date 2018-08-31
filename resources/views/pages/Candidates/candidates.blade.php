@@ -8,16 +8,14 @@
         </span>
           Candidates Page
     </h3>
-    <a href="/candidates/create" class="btn btn-gradient-primary btn-rounded btn-fw float-right">+Add Candidate</a>
+    <a href="/candidates-create" class="btn btn-gradient-primary btn-rounded btn-fw float-right">+Add Candidate</a>
 </div>
 <div class="row">
         <div class="col-md-4 stretch-card grid-margin">
           <div class="card bg-gradient-danger card-img-holder text-white">
             <div class="card-body">
               <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">
-              <h4 class="font-weight-normal mb-3">Professional
-               
-              </h4>
+              <h4 class="font-weight-normal mb-3">Professional Candidates</h4>
               <h2 class="mb-5">{{$candidateProf}}</h2>
               
             </div>
@@ -27,9 +25,7 @@
           <div class="card bg-gradient-info card-img-holder text-white">
             <div class="card-body">
               <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">                  
-              <h4 class="font-weight-normal mb-3">Learnership
-              
-              </h4>
+              <h4 class="font-weight-normal mb-3">Learnership Candidates</h4>
               <h2 class="mb-5">{{$candidateLearn}}</h2>
               
             </div>
@@ -39,9 +35,7 @@
           <div class="card bg-gradient-success card-img-holder text-white">
             <div class="card-body">
               <img src="{{ asset('storage/LayoutImages/circle.svg') }}" class="card-img-absolute" alt="circle-image">                                    
-              <h4 class="font-weight-normal mb-3">Internship 
-               
-              </h4>
+              <h4 class="font-weight-normal mb-3">Internship Candidates</h4>
               <h2 class="mb-5">{{$candidateIntern}}</h2>
               
             </div>
@@ -58,13 +52,14 @@
                 <a href="/candidates/shortlisted" class="btn btn-gradient-info btn-rounded btn-fw">Shortlisted Candidates</a>
                 <a href="/candidates/blacklisted" class="btn btn-gradient-danger btn-rounded btn-fw">Blacklisted Candidates</a>
               </div>
-            </div>           
+          </div>           
 </div>
         
 @if (count($candidates)>0)
-  
+   
     <div class="card">
       <div class="card-body">
+        
         <div style="overflow-x:auto;">  
           <table class="table table-bordered">
             <thead>

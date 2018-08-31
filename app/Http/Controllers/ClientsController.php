@@ -58,6 +58,18 @@ class ClientsController extends Controller
      */
     public function store(Request $request)
     {
+        $this -> validate($request,[
+            'company' => 'required',
+            'activities' => 'required',
+            'industry' => 'required',
+            'location' => 'required',
+            'contact' => 'required',
+            'noOfEmployees' => 'required',
+            'category' => 'required',
+            'user_id' => 'required',
+            'status' => 'required'
+        ]);
+
         //Create client
         $client = new client;
         //Assign values
@@ -111,6 +123,18 @@ class ClientsController extends Controller
      */
     public function update(Request $request, Client $client)
     {
+        $this -> validate($request,[
+            'company' => 'required',
+            'activities' => 'required',
+            'industry' => 'required',
+            'location' => 'required',
+            'contact' => 'required',
+            'noOfEmployees' => 'required',
+            'category' => 'required',
+            'user_id' => 'required',
+            'status' => 'required'
+        ]);
+        
         //Assign values
         $client->company = $request->input('company');
         $client->activities = $request->input('activities');

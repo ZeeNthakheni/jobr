@@ -44,16 +44,14 @@
                 </div>
                 <div class="form-group">
                 <label for="gender">Gender</label>
-                  <select class="form-control" id="gender" name="gender">
-                    <option>Select</option>
+                  <select class="form-control" id="gender" name="gender" aria-placeholder="Select">
                     <option>Male</option>
                     <option>Female</option>                  
                   </select>
                 </div>
                 <div class="form-group">
                 <label for="race">Race</label>
-                  <select class="form-control" id="race" name="race">
-                    <option>Select</option>
+                  <select class="form-control" id="race" name="race" aria-placeholder="Select">
                     <option>African</option>
                     <option>Indian</option>
                     <option>Coloured</option>
@@ -62,8 +60,7 @@
                 </div>
                 <div class="form-group">
                 <label for="candidateCategory">Candidate Category</label>
-                    <select class="form-control" id="candidateCategory" name="candidateCategory">
-                        <option>Select</option>
+                    <select class="form-control" id="candidateCategory" name="candidateCategory" aria-placeholder="Select">
                         <option>Professional</option>
                         <option>Learnership</option>
                         <option>Internship</option>
@@ -77,8 +74,7 @@
 
                 <div class="form-group">
                         <label for="status">Status</label>
-                          <select class="form-control" id="status" name="status">
-                            <option>Select</option>
+                          <select class="form-control" id="status" name="status" aria-placeholder="Select">
                             <option>Listed</option>
                             <option>Placed</option>
                             <option>Shortlisted</option>

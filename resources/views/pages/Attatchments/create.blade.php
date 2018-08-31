@@ -18,11 +18,14 @@
                 <div class="form-group">
                         <label for="candidate">Candidate Name</label>
                           <select class="form-control" id="candidate" name="candidate_id">
-                            <option>Select</option>
-                            <option disabled>----------------------</option>
-                            @foreach ($candidates as $candidate)
-                            <option value="{{$candidate->id}}">{{$candidate->name}}</option>   
-                            @endforeach   
+                            @if (count($candidates)>0)
+                                @foreach ($candidates as $candidate)
+                                <option value="{{$candidate->id}}">{{$candidate->name}}</option>   
+                                @endforeach    
+                            @else
+                            <option>No Candidates Available</option>
+                            @endif
+                               
                           </select>
                       </div>
 

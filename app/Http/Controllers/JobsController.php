@@ -60,6 +60,20 @@ class JobsController extends Controller
      */
     public function store(Request $request)
     {
+        $this -> validate($request,[
+            'company' => 'required',
+            'jobTitle' => 'required',
+            'responsibilities' => 'required',
+            'attributes' => 'required',
+            'qualifications' => 'required',
+            'location' => 'required',
+            'salary' => 'required',
+            'closingDate' => 'required',
+            'user_id' => 'required',
+            'client_id' => 'required',
+            'category' => 'required',
+            'status' => 'required',
+        ]);
         //Create job
         $job = new Job;
         //Assign values
@@ -116,6 +130,20 @@ class JobsController extends Controller
      */
     public function update(Request $request, job $job)
     {
+        $this -> validate($request,[
+            'company' => 'required',
+            'jobTitle' => 'required',
+            'responsibilities' => 'required',
+            'attributes' => 'required',
+            'qualifications' => 'required',
+            'location' => 'required',
+            'salary' => 'required',
+            'closingDate' => 'required',
+            'user_id' => 'required',
+            'client_id' => 'required',
+            'category' => 'required',
+            'status' => 'required',
+        ]);
         //Assign values
         $job->company = $request->input('company');
         $job->jobTitle = $request->input('jobTitle');

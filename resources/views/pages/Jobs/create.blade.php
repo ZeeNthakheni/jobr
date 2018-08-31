@@ -60,8 +60,8 @@
 
         <div class="form-group">
           <label for="recruiter">Recruiter</label>
-          <select class="form-control" id="recruiter" name="user_id">
-            <option>Select</option>
+          <select class="form-control" id="recruiter" name="user_id" aria-placeholder="Select">
+            
             @foreach ($userList as $user)
             <option value="{{$user->id}}">{{$user->name}}</option>   
             @endforeach
@@ -85,18 +85,21 @@
                 
         <div class="form-group">
           <label for="client">Client</label>
-            <select class="form-control" id="client" name="client_id">
-              <option>Select</option>
-              @foreach ($clientList as $client)
-              <option value="{{$client->id}}">{{$client->company}}</option>   
-              @endforeach   
+            <select class="form-control" id="client" name="client_id" aria-placeholder="Select">
+              @if (count($clientList)>0)
+                @foreach ($clientList as $client)
+                <option value="{{$client->id}}">{{$client->company}}</option>   
+                @endforeach  
+              @else
+                <option>No Clients Available</option>  
+              @endif
+                 
             </select>
         </div>
 
         <div class="form-group">
           <label for="category">Category</label>
-            <select class="form-control" id="category" name="category">
-              <option>Select</option>
+            <select class="form-control" id="category" name="category" aria-placeholder="Select">
               <option>Professional</option>
               <option>Learnership</option>
               <option>Internship</option>   
@@ -105,8 +108,7 @@
                     
         <div class="form-group">
           <label for="status">Status</label>
-            <select class="form-control" id="status" name="status">
-              <option>Select</option>
+            <select class="form-control" id="status" name="status" aria-placeholder="Select">
               <option>Active</option>
               <option>Pending</option>
               <option>Filled</option>  

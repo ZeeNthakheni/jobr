@@ -117,7 +117,7 @@
 
 
         <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
-        <button class="btn btn-light">Cancel</button>
+        <a href="/jobs-all" class="btn btn-light float-right">Cancel</a>
       </form>
     </div>               
   </div>

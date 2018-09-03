@@ -22,17 +22,16 @@
             <p><strong>Category: </strong>{{$client->category}}</p>
             <p><strong>Recruiter: </strong>{{$recruiterName}}</p>
             <p><strong>Status: </strong> {{$client->status}}</p>
-        </div>           
-    </div>
-</div>
 
-    <hr>
-    <div style="text-align: center">
-        <h2>Jobs Assigned to Client</h2>
-    </div>
-    <hr>
-    
-@if (count($client->job)>0)
+
+            <hr>
+            <div style="text-align: center">
+                <h2>Jobs Assigned to Client</h2>
+            </div>
+            <hr>
+
+
+            @if (count($client->job)>0)
     
     <div class="card">
       <div class="card-body">
@@ -92,4 +91,11 @@
       </div>
     </div>
 </div>
+        </div>           
+    </div>
+</div>
+
+  
+    
+
 @endsection

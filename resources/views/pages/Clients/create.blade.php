@@ -82,7 +82,7 @@
                 </div>
                 
                     <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
-                    <a href="/clients" class="btn btn-light float-right">Cancel</a>
+                    <a href="/clients-all" class="btn btn-light float-right">Cancel</a>
 
                 </form>
             </div>   

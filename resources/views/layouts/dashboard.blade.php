@@ -23,7 +23,7 @@
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <!-- endinject -->
-
+  <link rel="shortcut icon" href="{{ asset('favicon.png') }}" />
 </head>
 
 <body>

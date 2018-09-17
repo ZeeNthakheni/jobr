@@ -25,60 +25,60 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Jobs routes
-Route::get('/jobs-all','jobsController@index');
+Route::get('/jobs-all','JobsController@index');
 
-Route::get('/jobs-create','jobsController@create');
+Route::get('/jobs-create','JobsController@create');
 
-Route::get('/jobs-internship','jobsController@internship');
+Route::get('/jobs-internship','JobsController@internship');
 
-Route::get('/jobs-leanership','jobsController@learnership');
+Route::get('/jobs-leanership','JobsController@learnership');
 
-Route::get('/jobs-pending','jobsController@pending');
+Route::get('/jobs-pending','JobsController@pending');
 
-Route::get('/jobs-professional','jobsController@professional');
+Route::get('/jobs-professional','JobsController@professional');
 
-Route::resource('jobs', 'jobsController');
+Route::resource('jobs', 'JobsController');
 
 //Client routes
-Route::get('/clients-all','clientsController@index');
+Route::get('/clients-all','ClientsController@index');
 
-Route::get('/clients-create','clientsController@create');
+Route::get('/clients-create','ClientsController@create');
 
-Route::get('/clients-internship','clientsController@internship');
+Route::get('/clients-internship','ClientsController@internship');
 
-Route::get('/clients-leanership','clientsController@learnership');
+Route::get('/clients-leanership','ClientsController@learnership');
 
-Route::get('/clients-pending','clientsController@pending');
+Route::get('/clients-pending','ClientsController@pending');
 
-Route::get('/clients-professional','clientsController@professional');
+Route::get('/clients-professional','ClientsController@professional');
 
-Route::resource('clients', 'clientsController');
+Route::resource('clients', 'ClientsController');
 
 //Candidates routes
-Route::get('/candidates-create','candidatesController@create');
+Route::get('/candidates-create','CandidatesController@create');
 
-Route::get('/candidates/placed','candidatesController@placed');
+Route::get('/candidates/placed','CandidatesController@placed');
 
-Route::get('/candidates/listed','candidatesController@listed');
+Route::get('/candidates/listed','CandidatesController@listed');
 
-Route::get('/candidates-pending','candidatesController@pending');
+Route::get('/candidates-pending','CandidatesController@pending');
 
-Route::get('/candidates/shortlisted','candidatesController@shortlisted');
+Route::get('/candidates/shortlisted','CandidatesController@shortlisted');
 
-Route::get('/candidates/blacklisted','candidatesController@blacklisted');
+Route::get('/candidates/blacklisted','CandidatesController@blacklisted');
 
-Route::DELETE('/candidates/{candidate}/delete','candidatesController@destroy');
+Route::DELETE('/candidates/{candidate}/delete','CandidatesController@destroy');
 
-Route::resource('candidates', 'candidatesController');
+Route::resource('candidates', 'CandidatesController');
 
 
 //Attatchments routes
 
-Route::resource('attatchments', 'attatchmentsController');
+Route::resource('attatchments', 'AttatchmentsController');
 
-Route::get('/attatchments-create','attatchmentsController@create');
+Route::get('/attatchments-create','AttatchmentsController@create');
 
-Route::get('/attatchments/{attatchment}/download','attatchmentsController@download');
+Route::get('/attatchments/{attatchment}/download','AttatchmentsController@download');
 
 //Messages routes
 
@@ -86,6 +86,6 @@ Route::get('/attatchments/{attatchment}/download','attatchmentsController@downlo
 
 //User routes
 
-Route::get('/user-view','usersController@view');
+Route::get('/user-view','UsersController@view');
 
-Route::PATCH('/user-update/{user}','usersController@update');
+Route::PATCH('/user-update/{user}','UsersController@update');

@@ -69,7 +69,6 @@ class CandidatesController extends Controller
             'gender' => 'required',
             'race' => 'required',
             'candidateCategory' => 'required',
-            'experience' => 'required',
             'status' => 'required' 
         ]);
 
@@ -87,7 +86,7 @@ class CandidatesController extends Controller
         $candidate->gender = $request->input('gender');
         $candidate->race = $request->input('race');
         $candidate->candidateCategory = $request->input('candidateCategory');
-        $candidate->experience = $request->input('experience');
+        //$candidate->experience = $request->input('experience');
         $candidate->status = $request->input('status');
      
         //Save candidate
@@ -140,7 +139,6 @@ class CandidatesController extends Controller
             'gender' => 'required',
             'race' => 'required',
             'candidateCategory' => 'required',
-            'experience' => 'required',
             'status' => 'required',
         ]);
 
@@ -156,7 +154,7 @@ class CandidatesController extends Controller
         $candidate->gender = $request->input('gender');
         $candidate->race = $request->input('race');
         $candidate->candidateCategory = $request->input('candidateCategory');
-        $candidate->experience = $request->input('experience');
+        //$candidate->experience = $request->input('experience');
         $candidate->status = $request->input('status');
 
         //Save candidate

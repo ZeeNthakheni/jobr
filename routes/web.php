@@ -89,3 +89,13 @@ Route::get('/attatchments/{attatchment}/download','AttatchmentsController@downlo
 Route::get('/user-view','UsersController@view');
 
 Route::PATCH('/user-update/{user}','UsersController@update');
+
+//Companies Routes
+
+Route::get('/companies-all','CompaniesController@index');
+
+Route::get('/company-create','CompaniesController@create');
+
+Route::get('/company-edit/{id}','CompaniesController@edit');
+
+Route::resource('company', 'CompaniesController');

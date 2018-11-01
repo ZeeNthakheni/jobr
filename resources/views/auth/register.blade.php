@@ -37,6 +37,19 @@
                     </div>
                 </div>
 
+                <div class="form-group">                   
+                        <div>
+                            <input id="companyKey" type="text" class="form-control form-control-lg {{ $errors->has('companyKey') ? ' is-invalid' : '' }}" name="companyKey" value="{{ old('companyKey') }}" required autofocus placeholder="Company Key">
+    
+                            @if ($errors->has('companyKey'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('companyKey') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+    
+
                 <div class="form-group">
                         <div>
                             <input id="password" placeholder="Password" type="password" class="form-control form-control-lg {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>

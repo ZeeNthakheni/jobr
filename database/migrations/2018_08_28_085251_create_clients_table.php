@@ -25,6 +25,7 @@ class CreateClientsTable extends Migration
             $table->string('category');
             $table->integer('user_id');
             $table->string('status');
+            $table->string('companyKey')->default('None');
             $table->timestamps();
         });
     }

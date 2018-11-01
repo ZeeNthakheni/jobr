@@ -108,12 +108,38 @@
           </li>
           <!-- Attachments Nav item ends-->
 
-          <!-- Messages button
-          <div class="card-body">    
-            <div class="template-demo">
-              <a class="btn btn-gradient-success btn-rounded btn-fw" href="messages/create">+ Send Message</a>
+          <br>
+          <br>
+          <!-- Admin menu Seperator Nav item-->
+          <li class="nav-item">
+            <div class="border-bottom">
+                <h6 class="font-weight-normal mb-3">    Admin Menu</h6>                
             </div>
-          </div>
-           Messages button ends-->
-        </ul>
+          </li>
+          <!-- Admin menu Seperator Nav item ends-->
+
+          <!-- Companies Nav item-->
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#company-pages" aria-expanded="false" aria-controls="company-pages">
+              <span class="menu-title">Companies</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="company-pages">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/companies-all">View All</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/company-create">Create Company</a></li>
+              </ul>
+              </div>
+          </li>
+          <!-- Companies Nav item ends-->
+
+          <!-- Users Nav item-->
+          <li class="nav-item">
+            <a class="nav-link" href="/users">
+              <span class="menu-title">Users</span>
+              <i class="mdi mdi-account menu-icon"></i>
+            </a>
+          </li>
+          <!-- Users Nav item ends-->
+          
       </nav>

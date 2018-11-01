@@ -13,4 +13,8 @@ class job extends Model
     public function client(){
         return $this->belongsTo('App\Client');
     }
+
+    public function company(){
+        return $this->belongsTo('App\Company');
+    }
 }

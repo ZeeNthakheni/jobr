@@ -27,6 +27,7 @@ class CreateJobsTable extends Migration
             $table->integer('client_id');
             $table->string('category');
             $table->string('status');
+            $table->string('companyKey')->default('None');
             $table->timestamps();
         });
     }

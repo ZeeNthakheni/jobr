@@ -9,4 +9,8 @@ class Candidate extends Model
     public function attatchment(){
         return $this->hasMany('App\Attatchment');
     }
+    
+    public function company(){
+        return $this->belongsTo('App\Company');
+    }
 }

@@ -88,6 +88,14 @@ Route::get('/attatchments/{attatchment}/download','AttatchmentsController@downlo
 
 Route::get('/user-view','UsersController@view');
 
+Route::get('/users-all','UsersController@index');
+
+Route::get('/user/{user}','UsersController@show');
+
+Route::DELETE('/user/{user}','UsersController@destroy');
+
+Route::PUT('/user/{user}/update','UsersController@updateRole');
+
 Route::PATCH('/user-update/{user}','UsersController@update');
 
 //Companies Routes
@@ -96,6 +104,6 @@ Route::get('/companies-all','CompaniesController@index');
 
 Route::get('/company-create','CompaniesController@create');
 
-Route::get('/company-edit/{id}','CompaniesController@edit');
+Route::get('/company-edit/{company}','CompaniesController@edit');
 
 Route::resource('company', 'CompaniesController');

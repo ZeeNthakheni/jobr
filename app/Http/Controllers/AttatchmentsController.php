@@ -6,6 +6,8 @@ use App\Attatchment;
 use App\Candidate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use App\Company;
 
 class AttatchmentsController extends Controller {
 	/**
@@ -23,6 +25,16 @@ class AttatchmentsController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
+
+		//Create company
+        $company = new Company;
+        //Get current user
+        $user = Auth::user();
+        //Get current users company key
+        $userCompany = $user->companyKey;
+        //get company that corresponds to key
+		$userCompanyId = Company::where('key', $userCompany)->first();
+		
 		//Get All attatchments
 		$attatchmentObj = Attatchment::all();
 
@@ -31,21 +43,36 @@ class AttatchmentsController extends Controller {
 		$attatchmentInternship = 0;
 		//Find and sort category for attatcment candidate
 		foreach ($attatchmentObj as $obj) {
-			if ($obj->candidate->candidateCategory == 'Professional') {
-				$attatchmentProfessional++;
+			if($obj->candidate->company_id == $userCompanyId->id){
+				if ($obj->candidate->candidateCategory == 'Professional') {
+					$attatchmentProfessional++;
+				}
+				if ($obj->candidate->candidateCategory == 'Learnership') {
+					$attatchmenLearnership++;
+				}
+				if ($obj->candidate->candidateCategory == 'Internship') {
+					$attatchmentInternship++;
+				}
+			}		
+		}
+		
+
+		$attatchments = Attatchment::paginate(10);
+		foreach ($attatchments as $obj) {
+			if($obj->candidate->company_id == $userCompanyId->id){
+				$attatchmentsFiltered[] = $obj;
 			}
-			if ($obj->candidate->candidateCategory == 'Learnership') {
-				$attatchmenLearnership++;
-			}
-			if ($obj->candidate->candidateCategory == 'Internship') {
-				$attatchmentInternship++;
+			else{
+				$attatchmentsFiltered = null;
 			}
 		}
 
-		$attatchments = Attatchment::paginate(10);
-		return view('pages.attatchments.attatchments')->with(['attatchments' => $attatchments, 'attatchmentProfessional' => $attatchmentProfessional,
+		
+		
+
+		return view('pages.attatchments.attatchments')->with(['attatchments' => $attatchmentsFiltered, 'attatchmentProfessional' => $attatchmentProfessional,
 			'attatchmenLearnership' => $attatchmenLearnership,
-			'attatchmentInternship' => $attatchmentInternship]);
+			'attatchmentInternship' => $attatchmentInternship, 'pageAttatchments' => $attatchments]);
 	}
 
 	/**

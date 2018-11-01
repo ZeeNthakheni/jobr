@@ -15,7 +15,38 @@
   
         <div class="card">
             <div class="card-body">
-                <div style="overflow-x:auto;">  
+                <div style="overflow-x:auto;"> 
+                        <table class="table table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th>Company Name</th>
+                                  </tr>
+                                </thead>
+                                  <tbody>
+                                    @foreach ($companies as $company)
+                                    <tr>
+                                      <td>{{$company->name}}</td>
+                                      <td>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                    
+                                          <a href="/company-edit/{{$company->id}}" class="btn btn-gradient-info btn-fw" title="View" >
+                                            <i class="mdi mdi-glasses"></i>
+                                            View
+                                          </a>
+                                          @if (Auth::user()->companyKey != $company->key)
+                                            <form id="delete-form" action="/company/{{$company->id}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')  
+                                                <button type="submit" class="btn btn-gradient-danger btn-fw"> <i class="mdi mdi-eraser"></i>Delete</button>
+                                            </form>
+                                          @endif
+                                          
+                                        </div>
+                                      </td>                 
+                                    </tr>
+                                    @endforeach
+                                  </tbody> 
+                                </table>   
              
                 
     @else 

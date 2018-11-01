@@ -25,7 +25,7 @@ class CreateCandidatesTable extends Migration
             $table->string('race');
             $table->string('candidateCategory');
             $table->string('status');
-            $table->string('companyKey')->default('None');
+            $table->string('company_id');
             $table->timestamps();
         });
     }

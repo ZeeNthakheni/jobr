@@ -24,7 +24,16 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        return view('pages.company.list');
+        //Get current user
+        $user = Auth::user();
+        
+        if($user->role == 'SuperAdmin'){
+            $companies = Company::paginate(15);
+        }else{
+            $companies = Company::where('key',$user->companyKey)->paginate(15);
+        }
+
+        return view('pages.company.list')->with('companies',$companies);
     }
 
     /**
@@ -70,7 +79,7 @@ class CompaniesController extends Controller
         //Save client
         $company->save();
         //Redirect
-        return redirect('/home')->with('success','Company Created');
+        return redirect('/companies-all')->with('success','Company Created');
         
     }
 
@@ -82,7 +91,8 @@ class CompaniesController extends Controller
      */
     public function edit(Company $company)
     {
-        return view('pages.company.edit');
+        
+        return view('pages.company.edit')->with('company',$company);;
     }
 
     /**
@@ -94,7 +104,20 @@ class CompaniesController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $this -> validate($request,[
+            'name' => 'required',
+            'isActive' => 'required',
+        ]);
+
+        
+         //Assign values
+        $company->name = $request->input('name');
+        $company->isActive = $request->input('isActive');
+        //Save Company
+        $company->save();
+
+        return redirect('/companies-all')->with('success','Company Updated');
+
     }
 
     /**
@@ -105,6 +128,7 @@ class CompaniesController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        $company->delete();
+        return redirect()->action('CompaniesController@index')->with('success','Company Deleted');
     }
 }

@@ -44,7 +44,7 @@
         </div>           
 </div>
 
-@if (count($attatchments)>0)
+@if (count($attatchments)>0 && $attatchments!=null)
   
     <div class="card">
       <div class="card-body">
@@ -96,7 +96,7 @@
                 </div> 
             @endif
             <br>          
-            {{ $attatchments->links() }}
+            {{ $pageAttatchments->links() }}
       </div>
     </div>
   </div>

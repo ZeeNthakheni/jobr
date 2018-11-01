@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\job;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
 use App\Client;
+use App\Company;
 
 class JobsController extends Controller
 {
@@ -26,7 +28,19 @@ class JobsController extends Controller
      */
     public function index()
     {
-        $jobs = job::paginate(15);
+
+        //Create company
+        $company = new Company;
+        //Get current user
+        $user = Auth::user();
+        //Get current users company key
+        $userCompany = $user->companyKey;
+        //get company that corresponds to key
+        $userCompanyId = Company::where('key', $userCompany)->first();
+
+
+        $jobs = job::where('company_id',$userCompanyId->id)->paginate(15);
+        
         $recruiterName = new User;
 
         //Get Tab values
@@ -76,6 +90,7 @@ class JobsController extends Controller
         ]);
         //Create job
         $job = new Job;
+
         //Assign values
         $job->company = $request->input('company');
         $job->jobTitle = $request->input('jobTitle');
@@ -89,6 +104,18 @@ class JobsController extends Controller
         $job->client_id = $request->input('client_id');
         $job->category = $request->input('category');
         $job->status = $request->input('status');
+
+        //Create company
+        $company = new Company;
+        //Get current user
+        $user = Auth::user();
+        //Get current users company key
+        $userCompany = $user->companyKey;
+        //get company that corresponds to key
+        $userCompanyId = Company::where('key', $userCompany)->first();
+        //Assign company id to that of the user's company
+        $job->company_id = $userCompanyId->id;
+
         //Save job
         $job->save();
         //Redirect

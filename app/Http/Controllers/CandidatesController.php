@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Candidate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
 use App\Attatchment;
+use App\Company;
 
 class CandidatesController extends Controller
 {
@@ -26,7 +29,16 @@ class CandidatesController extends Controller
      */
     public function index()
     {
-        $candidates = Candidate::paginate(15);
+        //Create company
+        $company = new Company;
+        //Get current user
+        $user = Auth::user();
+        //Get current users company key
+        $userCompany = $user->companyKey;
+        //get company that corresponds to key
+        $userCompanyId = Company::where('key', $userCompany)->first();
+        
+        $candidates = Candidate::where('company_id',$userCompanyId->id)->paginate(15);
 
 
         //Get Tab values
@@ -88,6 +100,17 @@ class CandidatesController extends Controller
         $candidate->candidateCategory = $request->input('candidateCategory');
         //$candidate->experience = $request->input('experience');
         $candidate->status = $request->input('status');
+
+        //Create company
+        $company = new Company;
+        //Get current user
+        $user = Auth::user();
+        //Get current users company key
+        $userCompany = $user->companyKey;
+        //get company that corresponds to key
+        $userCompanyId = Company::where('key', $userCompany)->first();
+        //Assign company id to that of the user's company
+        $candidate->company_id = $userCompanyId->id;
      
         //Save candidate
         $candidate->save();

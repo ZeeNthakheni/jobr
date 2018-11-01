@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Client;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
+use App\Company;
+use Illuminate\Support\Facades\Auth;
 
 class ClientsController extends Controller
 {
@@ -25,7 +27,18 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        $clients = Client::paginate(15);
+        //Create company
+        $company = new Company;
+        //Get current user
+        $user = Auth::user();
+        //Get current users company key
+        $userCompany = $user->companyKey;
+        //get company that corresponds to key
+        $userCompanyId = Company::where('key', $userCompany)->first();
+
+        
+        $clients = Client::where('company_id',$userCompanyId->id)->paginate(15);
+
         $recruiterName = new User;
 
         //Get Tab values
@@ -83,10 +96,22 @@ class ClientsController extends Controller
         $client->category = $request->input('category');
         $client->user_id = $request->input('user_id');
         $client->status = $request->input('status');
+
+        //Create company
+        $company = new Company;
+        //Get current user
+        $user = Auth::user();
+        //Get current users company key
+        $userCompany = $user->companyKey;
+        //get company that corresponds to key
+        $userCompanyId = Company::where('key', $userCompany)->first();
+        //Assign company id to that of the user's company
+        $client->company_id = $userCompanyId->id;
+
         //Save client
         $client->save();
         //Redirect
-        return redirect('/clients-all')->with('success','client Created');
+        return redirect('/clients-all')->with('success','Client Created');
     }
 
     /**

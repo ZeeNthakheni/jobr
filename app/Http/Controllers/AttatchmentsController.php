@@ -58,6 +58,7 @@ class AttatchmentsController extends Controller {
 		
 
 		$attatchments = Attatchment::paginate(10);
+		$attatchmentsFiltered = null;
 		foreach ($attatchments as $obj) {
 			if($obj->candidate->company_id == $userCompanyId->id){
 				$attatchmentsFiltered[] = $obj;

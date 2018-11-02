@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use App\Attatchment;
 use App\Company;
+use App\Experience;
+use PDF;
 
 class CandidatesController extends Controller
 {
@@ -84,7 +86,7 @@ class CandidatesController extends Controller
             'status' => 'required' 
         ]);
 
-    
+        
 
         //Create candidate
         $candidate = new Candidate;
@@ -115,6 +117,23 @@ class CandidatesController extends Controller
         //Save candidate
         $candidate->save();
 
+        
+        if(count($request->input('experience'))>0){
+            foreach($request->input('experience') as $exp){
+                $experience = new Experience;
+    
+                $experience->company = $exp['company'];
+                $experience->startDate = $exp['startDate'];
+                $experience->endDate = $exp['endDate'];
+                $experience->body = $exp['body'];
+                $experience->candidate_id = $candidate->id;
+    
+                $experience->save();
+            }
+        }
+        
+
+        
 
         //Redirect
         return redirect('/candidates')->with('success','Candidate Created');
@@ -182,6 +201,34 @@ class CandidatesController extends Controller
 
         //Save candidate
         $candidate->save();
+
+        if(count($request->input('experience'))>0){
+            foreach($candidate->experiences as $exp){
+                
+                    $exp->delete();
+            }
+
+        }
+        
+        if(count($request->input('experience'))>0){
+
+            foreach($request->input('experience') as $exp){
+                
+                $experience = new Experience;
+
+                $experience->company = $exp['company'];
+                $experience->startDate = $exp['startDate'];
+                $experience->endDate = $exp['endDate'];
+                $experience->body = $exp['body'];
+                $experience->candidate_id = $candidate->id;
+    
+                $experience->save();
+            }
+
+        } 
+
+
+        
         //Redirect
         return redirect('/candidates')->with('success','Candidate Updated');
     }
@@ -280,5 +327,20 @@ class CandidatesController extends Controller
 
         return view('pages.candidates.candidates')->with(['candidates'=>$candidates,'candidateLearn'=>$candidateLearn
         ,'candidateProf'=>$candidateProf,'candidateIntern'=>$candidateIntern]);
+    }
+
+    public function download(Candidate $candidate) {
+		
+		
+		$pdf = PDF::loadView('pages.candidates.view',['candidate'=>$candidate]);
+		return $pdf->download($candidate->name.'.pdf');
+			
+    }
+    
+    public function deleteExperience(Experience $experience, $candidateId)
+    {
+        
+        $experience->delete();
+        return redirect('/candidates/'.$candidateId."/edit")->with('success','Experience Deleted');
     }
 }

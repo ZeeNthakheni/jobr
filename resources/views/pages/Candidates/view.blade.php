@@ -9,6 +9,7 @@
         </span>
         {{$candidate->name}}
     </h3>
+    <!-- <a href="/candidate/{{$candidate->id}}/download" class="btn btn-gradient-info btn-rounded btn-fw float-right">Download Profile</a> -->
     <a href="/attatchments/create" class="btn btn-gradient-success btn-rounded btn-fw float-right">+Add Attatchment</a>
 </div>
 
@@ -23,16 +24,42 @@
             <p><strong>Gender: </strong>{{$candidate->gender}}</p>
             <p><strong>Race: </strong>{{$candidate->race}}</p>
             <p><strong>Category: </strong>{{$candidate->candidateCategory}}</p>
-            <p><strong>Experience: </strong>{{$candidate->experience}}</p>
             <p><strong>Status: </strong>{{$candidate->status}}</p>
+            <hr>
+            <div style="text-align: center">
+                <h1>Experience</h1>
+            </div>
+            <hr>
+
+            @if (count($candidate->experiences)>0)
+                    @foreach ($candidate->experiences as $exp)
+                    <div class="form-group">
+                            <br>
+                            <div id="experienceDiv" name=''> 
+                                <p><strong>Company: </strong>{{$exp->company}}</p>
+                                <div>
+                                    <p><strong>Start Date: </strong>{{$exp->startDate}}</p>
+                                    <p><strong>End Date: </strong>{{$exp->endDate}}</p>
+                                </div>
+                                <label for="experienceBody"><strong>Experience Details:</strong></label>
+                                <p><strong></strong>{{$exp->body}}</p>
+                            </div>
+                    </div>
+                    @endforeach
+                @else
+                    <div style="text-align: center">
+                        <h2>No Experience Available</h2>
+                    </div>
+                @endif
+
             <hr>
             <div style="text-align: center">
                 <h1>Attatchments</h1>
             </div>
             <hr>
 
-            @if (count($attatchments)>0)
-                @foreach ($attatchments as $file)
+            @if (count($candidate->attatchment)>0)
+                @foreach ($candidate->attatchment as $file)
                     @if ($file->cv != 'None')
                     <div class="card">
                        <p class="float-left"><strong>File: </strong>  {{$file->candidateFileName}} 

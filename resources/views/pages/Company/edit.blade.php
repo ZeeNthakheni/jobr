@@ -26,7 +26,7 @@
               
             <div class="form-group">
                 <label for="key">Company Key</label>
-                <input type="text" class="form-control" id="key" name="key" value="{{$company->key}}" disabled>
+                <h4>{{$company->key}}</h4>
             </div>
 
             

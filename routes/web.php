@@ -57,6 +57,8 @@ Route::resource('clients', 'ClientsController');
 //Candidates routes
 Route::get('/candidates-create','CandidatesController@create');
 
+Route::get('/candidate/{candidate}/download','CandidatesController@download');
+
 Route::get('/candidates/placed','CandidatesController@placed');
 
 Route::get('/candidates/listed','CandidatesController@listed');
@@ -66,6 +68,8 @@ Route::get('/candidates-pending','CandidatesController@pending');
 Route::get('/candidates/shortlisted','CandidatesController@shortlisted');
 
 Route::get('/candidates/blacklisted','CandidatesController@blacklisted');
+
+Route::DELETE('/experience/{experience}/{candidate}/delete','CandidatesController@deleteExperience');
 
 Route::DELETE('/candidates/{candidate}/delete','CandidatesController@destroy');
 

@@ -110,6 +110,7 @@
 
           <br>
           <br>
+          <br>
           @if (Auth::user()->role == 'SuperAdmin' || Auth::user()->role == 'Admin')
             <!-- Admin menu Seperator Nav item-->
             <li class="nav-item">

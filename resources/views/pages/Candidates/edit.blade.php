@@ -2,6 +2,57 @@
 
 @section('content')
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+        $(document).ready(function(){
+            var expId = {{count($candidate->experiences)}};
+        
+            var removeBtn = '';
+        
+            $("#addExperience").click(function(event){
+                event.preventDefault();
+        
+                expId = expId + 1;
+        
+               // var company = "<input type=\"text\" class=\"form-control\" name=\"experience["+expId+"][company]\" placeholder=\"Company\">";
+        
+                var experience = "<div id = experienceDiv"+expId+">"+
+                "<div class=\"align-content-around\">"+
+                    "<label for=\"experience\">Additional Experience</label>"+
+                    "<button id=\"removeExperience\" class=\"btn btn-gradient-danger mr-2 float-right btn-sm btn-rounded\" onclick = \"removeRow(event,"+expId+")\">Remove Row</button>"+
+                "</div>"+
+                "<br>"+
+                "<label>Enter Company Name:</label>" +  
+                "<input type=\"text\" class=\"form-control\" name=\"experience["+expId+"][company]\" placeholder=\"Company\">" +
+                "<br>" +
+                "<div>" +
+                    "<label for=\"experience\">Start Date:</label>" +
+                    "<input type=\"date\" class=\"form-control\" id=\"startDate\" name=\"experience["+expId+"][startDate]\">" +
+                    "<br>" +
+                    "<label for=\"experience\">End Date:</label>" +
+                    "<input type=\"date\" class=\"form-control\" id=\"endDate\" name=\"experience["+expId+"][endDate]\">" +
+                "</div>" +
+                "<br>" +
+                "<label for=\"experienceBody\">Enter experience details:</label>" +
+                "<br>" +
+                "<textarea class=\"form-control\" id=\"experienceBody\" name=\"experience["+expId+"][body]\" rows=\"8\"></textarea>" +
+                "<br>"+
+                "</div>";
+ 
+        
+                $("#experienceDiv").append(experience);
+        
+        
+            });      
+        });
+        function removeRow(event, rowId) {
+            event.preventDefault();
+            
+            $("#experienceDiv"+rowId).empty("#experienceDiv"+rowId);
+            }  
+</script>
+
 <div class="page-header">
     <h3 class="page-title">
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
@@ -75,11 +126,41 @@
                         <option>Internship</option>
                     </select>
                 </div>
-   
-                <div class="form-group">
-                    <label for="experience">Experience</label>
-                    <textarea class="form-control" id="experience" name="experience" rows="8">{{$candidate->experience}}</textarea>
-                </div>
+                
+                @if (count($candidate->experiences)>0)
+                    <div class="align-content-around">
+                        <label for="experience">Experience</label>
+                        <button id="addExperience" class="btn btn-gradient-success mr-2 float-right btn-sm btn-rounded">+ Add Row</button>
+                    </div>
+
+                    @foreach ($candidate->experiences as $exp)
+                    <div class="form-group">
+                            <br>
+                            <div id="experienceDiv" name=''> 
+                                <label>Enter Company Name:</label>   
+                                <input type="text" class="form-control" name="experience[{{$exp->id}}][company]" placeholder="Company" value="{{$exp->company}}">
+                                <br>
+                                <div>
+                                    <label for="experience">Start Date:</label>
+                                    <input type="date" class="form-control" id="startDate" name="experience[{{$exp->id}}][startDate]" value="{{$exp->startDate}}">
+                                    <br>
+                                    <label for="experience">End Date:</label>
+                                    <input type="date" class="form-control" id="endDate" name="experience[{{$exp->id}}][endDate]" value="{{$exp->endDate}}">
+                                    <br>
+                                </div>
+                                <br>
+                                <label for="experienceBody">Enter experience details:</label>
+                                <br>
+                                <textarea class="form-control" id="experienceBody" name="experience[{{$exp->id}}][body]" rows="8">{{$exp->body}}</textarea>
+                                <br>
+                            </div>
+
+                            
+                    </div>
+                    @endforeach
+                
+                @endif
+                
 
                 <div class="form-group">
                         <label for="status">Status</label>
